@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Betting Website Element</title>
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <style>
+      /* Basic styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+
+      /* Header styles */
+      .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+      }
+
+      .game-time {
+        font-size: 18px;
+        color: #333;
+      }
+
+      /* Team styles */
+      .teams-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        padding-right: 2em;
+        border-right: 2px solid #464646;
+      }
+
+      .team {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .team-logo {
+        width: 40px; /* Set the size of the team logos */
+        height: 40px; /* Set the size of the team logos */
+        border-radius: 50%;
+        margin-right: 10px; /* Add margin to separate logo from team name */
+      }
+
+      .team-name {
+        font-weight: bold;
+        color: #333;
+      }
+
+      /* Odds styles */
+      .odds-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        margin-left: 2em;
+      }
+
+      .odd {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px 50px;
+        margin-left: 1em;
+        cursor: pointer;
+      }
+
+      .markets__count {
+        margin-left: 1em;
+      }
+
+      .odd-coefficient {
+        color: #333;
+        font-weight: bold;
+      }
+
+      /* Select box styles */
+      .select-box {
+        padding: 5px;
+      }
+
+      .stats {
+        width: 100%;
+        height: auto;
+        display: flex;
+      }
+
+      /* Bet slip card styles */
+      .bet-slip-card {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        display: none;
+        z-index: 999;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+
+      /* Additional styles for bet slip content */
+      .bet-slip-content {
+        margin-top: 20px;
+      }
+
+      .bet-item {
+        margin-bottom: 10px;
+      }
+
+      .bet-description {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="game-time">14:45 | Sun 17 Mar 2024</div>
+        <div class="select-container">
+          <label for="game-select">Select:</label>
+          <select class="select-box" id="game-select">
+            <option value="game1">Game 1</option>
+            <option value="game2">Game 2</option>
+            <option value="game3">Game 3</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="teams-container">
+          <div class="team">
+            <img
+              class="team-logo"
+              src="https://statistics.betconstruct.com/images/e/m/317/634072.webp"
+              alt="Team Logo"
+            />
+            <div class="team-name">Rare Atom</div>
+          </div>
+          <div class="team">
+            <img
+              class="team-logo"
+              src="https://statistics.betconstruct.com/images/e/m/195/390642.webp"
+              alt="Team Logo"
+            />
+            <div class="team-name">FunPlus Phoenix</div>
+          </div>
+        </div>
+
+        <div class="odds-container">
+          <div class="odd" data-testid="odd" onclick="showBetSlip()">
+            <!-- Add onclick event -->
+            <span class="odd-coefficient">4.30</span>
+          </div>
+          <div class="odd" data-testid="odd" onclick="showBetSlip()">
+            <!-- Add onclick event -->
+            <span class="odd-coefficient">1.18</span>
+          </div>
+          <div class="markets__count">+100</div>
+        </div>
+      </div>
+
+      <!-- Bet slip card -->
+      <div class="bet-slip-card" id="bet-slip-card">
+        <div class="close-btn" onclick="hideBetSlip()">X</div>
+        <h2>Bet Slip</h2>
+        <div class="bet-slip-content">
+          <div class="bet-item">
+            <p class="bet-description">Bet on Rare Atom to win</p>
+            <span class="odd-coefficient">4.30</span>
+            <button>Remove</button>
+          </div>
+          <div class="bet-item">
+            <p class="bet-description">Bet on FunPlus Phoenix to win</p>
+            <span class="odd-coefficient">1.18</span>
+            <button>Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Function to show bet slip card
+      function showBetSlip() {
+        var betSlipCard = document.getElementById("bet-slip-card");
+        betSlipCard.style.display = "block";
+      }
+
+      // Function to hide bet slip card
+      function hideBetSlip() {
+        var betSlipCard = document.getElementById("bet-slip-card");
+        betSlipCard.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
+<div class="custom-betslip-body" data-testid="betslip-body">
+    <div class="custom-scrollArea">
+        <div class="custom-betslipContainer single lastItem" role="button" tabindex="0" aria-disabled="false" aria-roledescription="sortable" aria-describedby="">
+            <div class="custom-BetItemHeading betslipEventInfoPopup">
+                <div class="custom-BetHeadingText betslip__bet-head-text single">
+                    <span class="custom-icon text-color"></span>
+                    <span class="custom-bet-item-name">Tencent LoL Pro League (LPL)</span>
+                </div>
+                <div class="custom-betslip__bet__actions">
+                    <span class="custom-action-icon"></span>
+                    <span class="custom-delete-icon"></span>
+                </div>
+            </div>
+            <div class="custom-betItemContent">
+                <div class="custom-BetEvent bet__event">
+                    <span class="custom-BetEventName"><span data-testid="betslip-game-teams">Ultra Prime - Oh My God</span></span>
+                    <div class="custom-BetDate">17 Mar</div>
+                </div>
+                <div class="custom-BetEvent bet__event">
+                    <span class="custom-BetEventMarketName">Match Winner</span>
+                    <div class="custom-BetDate">12:45</div>
+                </div>
+                <div class="custom-bet-container">
+                    <span class="custom-BetWinnerName">W2</span>
+                    <span class="custom-BetWinnerCoef">1.28</span>
+                </div>
+            </div>
+            <div class="custom-stake-field-container">
+                <div class="custom-StakeWrapper">
+                    <div class="custom-input stakeField-antdInput">
+                        <input id="stake-input" placeholder="Stake" maxlength="11" class="custom-input-field" type="text" value="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="custom-betslip-switcher-wrapper" data-testid="book a bet">
+        <div class="custom-betslip-switcher-container">
+            <span class="custom-feature-info-icon"></span>Book A Bet
+        </div>
+        <div class="switch-button">
+            <label class="custom-switch">
+                <input type="checkbox" id="bet-toggle">
+                <span class="custom-switch-slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- New container for Bet/Ticket Number -->
+    <div id="bet-container" style="display: none;">
+        <div class="bet-number-container">
+            <label for="bet-number">Bet/Ticket Number</label>
+            <input type="text" id="bet-number">
+        </div>
+        <button id="submit-bet" class="custom-place-bet-button">Stakes</button>
+    </div>
+    
+    <div id="singleFreeBetSwitcherPortalId"></div>
+    <div class="custom-footer">
+        <div class="custom-predefined-container">
+            <button type="button" class="custom-predefined-button"><span>+10,000</span></button>
+            <button type="button" class="custom-predefined-button"><span>+50,000</span></button>
+            <button type="button" class="custom-predefined-button"><span>+100,000</span></button>
+        </div>
+        <div class="custom-footer-container">
+            <div class="custom-total-return-box">
+                <div class="custom-footer-label">Total Return</div>
+                <div data-testid="total-return" class="custom-footer-value">
+                    <div class="custom-result-value betslip-amount">0</div>
+                </div>
+            </div>
+            <div class="custom-button-group">
+                <button data-testid="place-bet" type="button" class="custom-place-bet-button">Sign In and Bet</button>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    /* Betslip Body */
+    .custom-betslip-body {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        background-color: #f7f7f7;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    /* Bet Item Name */
+    .custom-bet-item-name {
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* Bet Event Name */
+    .custom-BetEventName {
+        font-size: 18px;
+        font-weight: bold;
+        color: #444;
+    }
+
+    /* Bet Event Market Name */
+    .custom-BetEventMarketName {
+        font-size: 16px;
+        color: #666;
+    }
+
+    /* Bet Winner Name */
+    .custom-BetWinnerName {
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    /* Stake Input */
+    .custom-input-field {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Bet Slip Switcher */
+    .custom-betslip-switcher-container {
+        margin-top: 15px;
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    /* Footer Button */
+    .custom-predefined-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    /* Footer Button Hover */
+    .custom-predefined-button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Place Bet Button */
+    .custom-place-bet-button {
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 25px;
+        cursor: pointer;
+    }
+
+    /* Place Bet Button Hover */
+    .custom-place-bet-button:hover {
+        background-color: #218838;
+    }
+
+    .custom-betslip-switcher-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .switch-button {
+        margin-top: .5em;
+    }
+
+    /* Custom Switch */
+.custom-switch {
+    display: inline-block;
+    margin-left: auto; /* Aligns switch to the right */
+    position: relative;
+    width: 48px; /* Reduced width */
+    height: 26px; /* Reduced height */
+}
+
+.custom-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.custom-switch-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 26px; /* Half of the height */
+}
+
+.custom-switch-slider:before {
+    position: absolute;
+    content: "";
+    height: 22px; /* Reduced height */
+    width: 22px; /* Reduced width */
+    left: 2px; /* Adjusted left position */
+    bottom: 2px; /* Adjusted bottom position */
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.custom-switch input:checked + .custom-switch-slider {
+    background-color: #007bff;
+}
+
+.custom-switch input:focus + .custom-switch-slider {
+    box-shadow: 0 0 1px #007bff;
+}
+
+.custom-switch input:checked + .custom-switch-slider:before {
+    transform: translateX(22px); /* Adjusted translation */
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const stakeInput = document.getElementById("stake-input");
+
+    // Function to update return value based on the input value
+    function updateReturnValue() {
+        // Get the current value of the input box
+        let currentValue = parseFloat(stakeInput.value.trim());
+
+        // If the input box is empty or the value is not a number, set currentValue to 0
+        if (isNaN(currentValue)) {
+            currentValue = 0;
+        }
+
+        // Calculate the return value as 120% of the input value
+        const returnValue = currentValue * 1.2;
+
+        // Update the total return value display accordingly
+        document.querySelector(".custom-result-value.betslip-amount").textContent = returnValue.toFixed(2);
+    }
+
+    // Get all predefined buttons
+    const predefinedButtons = document.querySelectorAll(".custom-predefined-button");
+
+    // Add event listener to each predefined button
+    predefinedButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            // Get the value of the button
+            const value = parseFloat(button.querySelector("span").textContent.replace("+", "").trim());
+
+            // Get the current value of the input box
+            let currentValue = parseFloat(stakeInput.value.trim());
+
+            // If the input box is empty or the value is not a number, set currentValue to 0
+            if (isNaN(currentValue)) {
+                currentValue = 0;
+            }
+
+            // Add the value of the button to the existing value in the input box
+            const newValue = currentValue + value;
+
+            // Update the input box with the new value
+            stakeInput.value = newValue;
+
+            // Update the return value based on the input value
+            updateReturnValue();
+        });
+    });
+
+    // Add event listener to input box for change events
+    stakeInput.addEventListener("input", function() {
+        // Update the return value based on the input value
+        updateReturnValue();
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+        const betToggle = document.getElementById("bet-toggle");
+        const betContainer = document.getElementById("bet-container");
+
+        betToggle.addEventListener("change", function() {
+            if (betToggle.checked) {
+                betContainer.style.display = "block";
+            } else {
+                betContainer.style.display = "none";
+            }
+        });
+    });
+</script>

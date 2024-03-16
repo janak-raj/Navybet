@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Layout with Flag Icons</title>
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+  /* Basic styles for the sidebar */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .sidebar {
+    height: 100vh;
+    width: 250px;
+    background-color: #111;
+    padding-top: 20px;
+  }
+  
+  .sidebar a {
+    padding: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    display: block;
+  }
+  
+  .sidebar a:hover {
+    background-color: #555;
+  }
+  
+  /* Flag icons */
+  .flag-icon {
+    width: 30px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+  }
+  
+  /* Main section */
+  .main {
+    flex: 1;
+    padding: 20px;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .tab {
+    padding: 10px 20px;
+    background-color: #ddd;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+  }
+
+  .tab.active {
+    background-color: #fff;
+  }
+
+  /* Sport icons */
+  .sport-icon {
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+  }
+
+  /* Accordion styles */
+  .accordion {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .accordion-header {
+    padding: 10px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    position: relative; /* Add relative positioning */
+  }
+
+  .accordion-header:hover {
+    background-color: #e0e0e0;
+  }
+
+  .accordion-content {
+    padding: 10px;
+    display: none;
+  }
+
+  .accordion-content.active {
+    display: block;
+  }
+
+  /* Icon styles */
+  .fa-angle-up,
+  .fa-angle-down {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+  }
+
+  .accordion-header.active .fa-angle-up {
+    display: block;
+  }
+
+  .accordion-header.active .fa-angle-down {
+    display: none;
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    body {
+      flex-direction: column;
+    }
+
+    .sidebar {
+      width: 100%;
+    }
+    
+    .main {
+      width: 100%;
+    }
+    
+    .sidebar-right {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+
+  /* Header styles */
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
+
+  .game-time {
+    font-size: 18px;
+    color: #333;
+  }
+
+  /* Team styles */
+  .teams-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    padding-right: 2em;
+    border-right: 2px solid #464646;
+  }
+
+  .team {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .team-logo {
+    width: 40px; /* Set the size of the team logos */
+    height: 40px; /* Set the size of the team logos */
+    border-radius: 50%;
+    margin-right: 10px; /* Add margin to separate logo from team name */
+  }
+
+  .team-name {
+    font-weight: bold;
+    color: #333;
+  }
+
+  /* Odds styles */
+  .odds-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 2em;
+  }
+
+  .odd {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 50px;
+    margin-left: 1em;
+    cursor: pointer;
+  }
+
+  .markets__count {
+    margin-left: 1em;
+  }
+
+  .odd-coefficient {
+    color: #333;
+    font-weight: bold;
+  }
+
+  /* Select box styles */
+  .select-box {
+    padding: 5px;
+  }
+
+  .stats {
+    width: 100%;
+    height: auto;
+    display: flex;
+  }
+
+  /* Bet slip card styles */
+  .bet-slip-card {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: none;
+    z-index: 999;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <ul>
+    <li>
+      <a href="#"><span class="flag-icon" style="background-image: url('https://cdn.jsdelivr.net/gh/lipis/flag-icon-css@0.10.1/flags/4x3/us.svg')"></span>United States</a>
+      <ul class="submenu">
+        <li><a href="#">Submenu 1</a></li>
+        <li><a href="#">Submenu 2</a></li>
+        <li><a href="#">Submenu 3</a></li>
+      </ul>
+    </li>
+    <!-- Add more countries as needed -->
+  </ul>
+</div>
+
+<div class="main">
+  <div class="tabs">
+    <div class="tab active" onclick="changeTab(0)">Football</div>
+    <div class="tab" onclick="changeTab(1)">Basketball</div>
+    <div class="tab" onclick="changeTab(2)">Tennis</div>
+    <!-- Add more tabs as needed -->
+  </div>
+  <div class="content">
+    <div id="footballContent" style="display: block;">
+      <h2>Football</h2>
+      <p>This is the football content.</p>
+      <div class="sport-icon" style="background-image: url('https://image.flaticon.com/icons/svg/1409/1409897.svg')"></div>
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span class="flag-icon" style="background-image: url('https://cdn.jsdelivr.net/gh/lipis/flag-icon-css@0.10.1/flags/4x3/us.svg')"></span>
+          United States
+          <i class="fas fa-angle-down"></i> <!-- Angle down icon -->
+          <i class="fas fa-angle-up" style="display: none;"></i> <!-- Angle up icon -->
+        </div>
+        <div class="accordion-content">
+            <div class="container">
+                <div class="header">
+                  <div class="game-time">14:45 | Sun 17 Mar 2024</div>
+                  <div class="select-container">
+                    <label for="game-select">Select:</label>
+                    <select class="select-box" id="game-select">
+                      <option value="game1">Game 1</option>
+                      <option value="game2">Game 2</option>
+                      <option value="game3">Game 3</option>
+                    </select>
+                  </div>
+                </div>
+              
+                <div class="stats">
+                  <div class="teams-container">
+                    <div class="team">
+                      <img class="team-logo" src="https://statistics.betconstruct.com/images/e/m/317/634072.webp" alt="Team Logo">
+                      <div class="team-name">Rare Atom</div>
+                    </div>
+                    <div class="team">
+                      <img class="team-logo" src="https://statistics.betconstruct.com/images/e/m/195/390642.webp" alt="Team Logo">
+                      <div class="team-name">FunPlus Phoenix</div>
+                    </div>
+                  </div>
+                  
+                  <div class="odds-container">
+                    <div class="odd" data-testid="odd" onclick="showBetSlip()"> <!-- Add onclick event -->
+                      <span class="odd-coefficient">4.30</span>
+                    </div>
+                    <div class="odd" data-testid="odd" onclick="showBetSlip()"> <!-- Add onclick event -->
+                      <span class="odd-coefficient">1.18</span>
+                    </div>
+                    <div class="markets__count">+100</div>
+                  </div>
+                </div>
+              
+                
+              
+              </div>
+        </div>
+      </div>
+    </div>
+    <div id="basketballContent" style="display: none;">
+      <h2>Basketball</h2>
+      <p>This is the basketball content.</p>
+      <div class="sport-icon" style="background-image: url('https://image.flaticon.com/icons/svg/1409/1409897.svg')"></div>
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span class="flag-icon" style="background-image: url('https://cdn.jsdelivr.net/gh/lipis/flag-icon-css@0.10.1/flags/4x3/gb.svg')"></span>
+          United Kingdom
+          <i class="fas fa-angle-down"></i> <!-- Angle down icon -->
+          <i class="fas fa-angle-up" style="display: none;"></i> <!-- Angle up icon -->
+        </div>
+        <div class="accordion-content">
+          <p>Some content about the United Kingdom.</p>
+        </div>
+      </div>
+    </div>
+    <div id="tennisContent" style="display: none;">
+      <h2>Tennis</h2>
+      <p>This is the tennis content.</p>
+      <div class="sport-icon" style="background-image: url('https://image.flaticon.com/icons/svg/1409/1409897.svg')"></div>
+      <div class="accordion">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span class="flag-icon" style="background-image: url('https://cdn.jsdelivr.net/gh/lipis/flag-icon-css@0.10.1/flags/4x3/ca.svg')"></span>
+          Canada
+          <i class="fas fa-angle-down"></i> <!-- Angle down icon -->
+          <i class="fas fa-angle-up" style="display: none;"></i> <!-- Angle up icon -->
+        </div>
+        <div class="accordion-content">
+          <p>Some content about Canada.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Add more content divs for additional tabs -->
+  </div>
+</div>
+
+<div class="sidebar-right">
+  <h2>Right Sidebar</h2>
+  <!-- Bet slip card -->
+  <div class="bet-slip-card" id="bet-slip-card">
+    <div class="close-btn" onclick="hideBetSlip()">X</div>
+    <h2>Bet Slip</h2>
+    <!-- Add your bet slip content here -->
+  </div>
+</div>
+
+<!-- Font Awesome CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+<script>
+  function changeTab(index) {
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.content > div');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    contents.forEach(content => content.style.display = 'none');
+    tabs[index].classList.add('active');
+    contents[index].style.display = 'block';
+  }
+
+  function toggleAccordion(accordionHeader) {
+    const accordionContent = accordionHeader.nextElementSibling;
+    accordionContent.classList.toggle('active');
+    accordionHeader.classList.toggle('active');
+    const angleUpIcon = accordionHeader.querySelector('.fa-angle-up');
+    const angleDownIcon = accordionHeader.querySelector('.fa-angle-down');
+    angleUpIcon.style.display = angleUpIcon.style.display === 'none' ? 'block' : 'none';
+    angleDownIcon.style.display = angleDownIcon.style.display === 'none' ? 'block' : 'none';
+  }
+</script>
+
+<script>
+    // Function to show bet slip card
+    function showBetSlip() {
+      var betSlipCard = document.getElementById("bet-slip-card");
+      betSlipCard.style.display = "block";
+    }
+  
+    // Function to hide bet slip card
+    function hideBetSlip() {
+      var betSlipCard = document.getElementById("bet-slip-card");
+      betSlipCard.style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
