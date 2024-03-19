@@ -26,14 +26,28 @@
   .sidebar a {
     padding: 10px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 18px;
     color: #fff;
-    display: block;
-  }
-  
-  .sidebar a:hover {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar a:hover {
     background-color: #555;
-  }
+}
+
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+
+.submenu.active {
+    display: block;
+}
+
+.angle-icon {
+    margin-left: auto;
+}
   
   /* Flag icons */
   .flag-icon {
@@ -257,18 +271,20 @@
 </head>
 <body>
 
-<div class="sidebar">
-  <ul>
-    <li>
-      <a href="#"><span class="flag-icon" style="background-image: url('https://cdn.jsdelivr.net/gh/lipis/flag-icon-css@0.10.1/flags/4x3/us.svg')"></span>United States</a>
-      <ul class="submenu">
-        <li><a href="#">Submenu 1</a></li>
-        <li><a href="#">Submenu 2</a></li>
-        <li><a href="#">Submenu 3</a></li>
-      </ul>
-    </li>
-    <!-- Add more countries as needed -->
-  </ul>
+  <div class="sidebar">
+    <ul>
+        <li><a href="#"><i class="fas fa-flag"></i> Home</a></li>
+        <li><a href="#"><i class="fas fa-flag"></i> About</a></li>
+        <li>
+            <a href="#" class="dropdown-toggle"><i class="fas fa-flag"></i> Services <i class="fas fa-angle-down angle-icon"></i></a>
+            <ul class="submenu">
+                <li><a href="#"><i class="fas fa-flag"></i> Web Design</a></li>
+                <li><a href="#"><i class="fas fa-flag"></i> Graphic Design</a></li>
+                <li><a href="#"><i class="fas fa-flag"></i> SEO</a></li>
+            </ul>
+        </li>
+        <li><a href="#"><i class="fas fa-flag"></i> Contact</a></li>
+    </ul>
 </div>
 
 <div class="main">
@@ -417,5 +433,20 @@
     }
   </script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  
+      dropdownToggles.forEach(toggle => {
+          toggle.addEventListener('click', function() {
+              const submenu = this.nextElementSibling;
+              submenu.classList.toggle('active');
+              const angleIcon = this.querySelector('.angle-icon');
+              angleIcon.classList.toggle('fa-angle-up');
+              angleIcon.classList.toggle('fa-angle-down');
+          });
+      });
+  });
+  </script>
 </body>
 </html>

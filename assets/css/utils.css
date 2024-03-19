@@ -1,0 +1,477 @@
+.main-section {
+  background-color: #232323;
+  margin-top: 0.1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.game-side-panel {
+  width: 250px;
+  height: 100vh;
+  background-color: #333;
+  padding-top: 20px;
+  padding: 10px;
+}
+
+.game-side-panel ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.game-side-panel li {
+  padding: 10px 40px;
+  color: #fff;
+  cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-bottom: 1px solid #444;
+    margin-top: .5em;
+}
+
+.game-side-panel li:hover {
+  background-color: #555;
+}
+
+.game-side-panel .gpactive {
+  background-color: #666;
+}
+
+.game-side-panel i {
+  margin-right: 10px;
+}
+
+.submenu {
+  display: none;
+}
+
+.submenu.active {
+  display: block;
+}
+
+.submenu li {
+    padding: 8px 16px;
+    margin: 0;
+  color: #ddd;
+  font-size: 12px;
+}
+
+.submenu li a {
+    text-decoration: none;
+    text-align: left;
+}
+
+.submenu li:hover {
+  background-color: #555;
+}
+
+.submenu li.active {
+  background-color: #232323;
+}
+
+.panel-divider {
+    padding-left: 2em; font-size: 20px;
+    margin-top: .5em;
+}
+
+.panel-icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.toggle-icon {
+    float: right;
+}
+
+.hr-line {
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+/* Flag icons */
+.flag-icon {
+  width: 30px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+}
+
+/* Main section */
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+.sidebar-right {
+    width: 20%;
+    border: 1px solid #333;
+}
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  background-color: #444;
+  border-radius: 5px 5px 0 0;
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: #333;
+}
+
+/* Sport icons */
+.sport-icon {
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+}
+
+/* Accordion styles */
+.accordion {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.accordion-header {
+  padding: 10px;
+  background-color: #333;
+  cursor: pointer;
+  position: relative; /* Add relative positioning */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.accordion-header h3 {
+    margin-left: 2em;
+}
+
+.accordion-header:hover {
+  background-color: #222;
+}
+
+.accordion-content {
+  padding: 10px;
+  display: none;
+}
+
+.accordion-content.active {
+  display: block;
+}
+
+/* Icon styles */
+.t-up,
+.t-down {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+}
+
+.accordion-header.active .fa-angle-up {
+  display: block;
+}
+
+.accordion-header.active .fa-angle-down {
+  display: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .game-side-pannel {
+    width: 100%;
+  }
+
+  .main {
+    width: 100%;
+  }
+
+  .game-side-pannel-right {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.bet_container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #333;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.game-time {
+  font-size: 12px;
+  color: #fff;
+}
+
+/* Team styles */
+.teams-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding-right: 2em;
+  border-right: 2px solid #464646;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.team-logo {
+  width: 30px; /* Set the size of the team logos */
+  height: 30px; /* Set the size of the team logos */
+  border-radius: 50%;
+  margin-right: 10px; /* Add margin to separate logo from team name */
+}
+
+.team-name {
+  font-weight: bold;
+  font-size: 14px;
+  color: #fff;
+}
+
+/* Odds styles */
+.odds-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 2em;
+}
+
+.odd {
+  background-color: #232323;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 50px;
+  margin-left: 1em;
+  cursor: pointer;
+}
+
+.markets__count {
+  margin-left: 1em;
+}
+
+.odd-coefficient {
+  color: yellow;
+  font-weight: bold;
+}
+
+/* Select box styles */
+.select-box {
+  padding: 5px;
+  background-color: #232323;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.stats {
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+
+/* Bet slip card styles */
+.bet-slip-card {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #232323;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: none;
+  z-index: 999;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.custom-betslip-body {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #333;
+    margin: 0 auto;
+}
+
+/* Bet Item Name */
+.custom-bet-item-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Bet Event Name */
+.custom-BetEventName {
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Bet Event Market Name */
+.custom-BetEventMarketName {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Bet Winner Name */
+.custom-BetWinnerName {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Stake Input */
+.custom-input-field {
+    outline: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #232323;
+    margin-top: .5em;
+}
+
+/* Bet Slip Switcher */
+.custom-betslip-switcher-container {
+    margin-top: 14px;
+    font-weight: bold;
+    color: yellow;
+}
+
+.custom-predefined-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Footer Button */
+.custom-predefined-button {
+    width: 49%;
+    height: 40px;
+    margin: auto;
+    margin-top: .5em;
+    background-color: goldenrod;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Footer Button Hover */
+.custom-predefined-button:hover {
+    background-color: #0056b3;
+}
+
+/* Place Bet Button */
+.custom-place-bet-button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 25px;
+    cursor: pointer;
+    margin-top: .5em;
+}
+
+/* Place Bet Button Hover */
+.custom-place-bet-button:hover {
+    background-color: #218838;
+}
+
+.custom-betslip-switcher-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.switch-button {
+    margin-top: .5em;
+}
+
+/* Custom Switch */
+.custom-switch {
+display: inline-block;
+margin-left: auto; /* Aligns switch to the right */
+position: relative;
+width: 40px; /* Reduced width */
+height: 20px; /* Reduced height */
+}
+
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+.custom-switch-slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .4s;
+border-radius: 20px; /* Half of the height */
+}
+
+.custom-switch-slider:before {
+position: absolute;
+content: "";
+height: 16px; /* Reduced height */
+width: 16px; /* Reduced width */
+left: 2px; /* Adjusted left position */
+bottom: 2px; /* Adjusted bottom position */
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+
+.custom-switch input:checked + .custom-switch-slider {
+background-color: #007bff;
+}
+
+.custom-switch input:focus + .custom-switch-slider {
+box-shadow: 0 0 1px #007bff;
+}
+
+.custom-switch input:checked + .custom-switch-slider:before {
+transform: translateX(22px); /* Adjusted translation */
+}

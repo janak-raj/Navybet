@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navybet - Sports</title>
+    <link rel="stylesheet" href="../assets/css/app.css" />
+    <link rel="stylesheet" href="../assets/css/utils.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+  </head>
+  <body>
+    <div class="navigation">
+      <nav>
+        <div class="logo">
+          <!-- <img src="logo.svg" alt="Logo Image" /> -->
+          <a href="../index.html"><h4>NavyBet</h4></a>
+        </div>
+        <div class="hamburger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+        <ul class="nav-links">
+          <li><a href="live.html">Live</a></li>
+          <li><a href="sports.html">Sports</a></li>
+          <li><a href="live-casino.html">Live Casino</a></li>
+          <li><a href="slots.html">Slots</a></li>
+          <li><a href="wonder-wheel.html">Wonder Wheel</a></li>
+          <li><a href="e-sports.html" class="active">E-Sports</a></li>
+          <!-- <li><a href="#" id="dropBtn" onmouseover="dropSubMenu()" class="dropbtn">Tournaments</a></li> -->
+
+          <li>
+            <a onmouseover="dropSubMenu()" class="dropbtn">Tournaments</a>
+            <div id="myDropdown" class="dropdown-content">
+              <ul>
+                <li><a href="sport-tournaments.html">Sport Tournaments</a></li>
+                <li>
+                  <a href="casino-tournaments.html">Casino Tournaments</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li><button class="login-button" href="auth.html">Log In</button></li>
+          <li><button class="join-button" href="auth.html">Sign Up</button></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Main Section -->
+    <main>
+      <div class="main-section">
+        <!-- Side Pannel -->
+        <div class="game-side-panel">
+          <ul>
+            
+            <li>
+              <i class="fa fa-star"></i> Favourites
+              <i class="fas fa-angle-down toggle-icon"></i>
+              <ul class="submenu active">
+                <h4 style="text-align: center; padding: 20px;">Nothing...!</h4>
+              </ul>
+            </li>
+            <hr class="hr-line">
+            <div class="panel-divider">
+              E-Sports
+            </div>
+            <hr class="hr-line">
+            <li><i class="fa fa-play"></i> All Games <i class="fa fa-play"></i></li>
+            <li><i class="fa fa-play"></i> Live Matches <i class="fa fa-play"></i></li>
+            <li><i class="fa fa-play"></i> PreMatch <i class="fa fa-play"></i></li>
+            <hr class="hr-line">
+            <div class="panel-divider">
+              Regions
+            </div>
+            <hr class="hr-line">
+            <li>
+              <img src="../assets/flags/1x1/eu.svg" alt="" srcset="" class="panel-icon"> <b class="nav-label">Europe</b>
+              <i class="fas fa-angle-down toggle-icon"></i>
+              <ul class="submenu">
+                <li><i class="fa fa-star"></i> <a href=""> Prime League</a></li>
+                <li><i class="fa fa-star"></i>&nbsp; <a href=""> Champions League</a></li>
+              </ul>
+            </li>
+            <li>
+              <img src="../assets/flags/1x1/ae.svg" alt="" srcset="" class="panel-icon"> America
+              <i class="fas fa-angle-down toggle-icon"></i>
+              <ul class="submenu">
+                <li><i class="fa fa-star"></i> &nbsp; <a href="">Latin America League (LLA)</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="main">
+          <div class="tabs">
+            <div class="tab active" onclick="changeTab(0)">All E-Sports</div>
+            <div class="tab" onclick="changeTab(1)">League of Legends</div>
+            <div class="tab" onclick="changeTab(2)">Dota 2</div>
+            <div class="tab active" onclick="changeTab(3)">Counter-Strike 2</div>
+            <!-- Add more tabs as needed -->
+          </div>
+          <div class="content">
+            <div id="footballContent" style="display: block">
+              
+              <p>Here are all the E-Sports</p>
+              <div
+                class="sport-icon"
+                style="
+                  background-image: url('https://image.flaticon.com/icons/svg/1409/1409897.svg');
+                "
+              ></div>
+              <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                  <img src="../assets/flags/1x1/ae.svg" alt="" srcset="" class="panel-icon">
+                  <h3>
+                    League of Legends
+                  </h3>
+                  <i class="fas fa-angle-down t-down"></i>
+                  <!-- Angle down icon -->
+                  <i class="fas fa-angle-up t-up" style="display: none"></i>
+                  <!-- Angle up icon -->
+                </div>
+                <div class="accordion-content">
+                  <div class="bet_container">
+                    <div class="header">
+                      <div class="game-time">14:45 | Sun 17 Mar 2024</div>
+                      <div class="select-container">
+                        <label for="game-select">&nbsp;</label>
+                        <select class="select-box" id="game-select">
+                          <option value="">Match</option>
+                          <option value="game1">Game 1</option>
+                          <option value="game2">Game 2</option>
+                          <option value="game3">Game 3</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="stats">
+                      <div class="teams-container">
+                        <div class="team">
+                          <img
+                            class="team-logo"
+                            src="https://statistics.betconstruct.com/images/e/m/317/634072.webp"
+                            alt="Team Logo"
+                          />
+                          <div class="team-name">Rare Atom</div>
+                        </div>
+                        <div class="team">
+                          <img
+                            class="team-logo"
+                            src="https://statistics.betconstruct.com/images/e/m/195/390642.webp"
+                            alt="Team Logo"
+                          />
+                          <div class="team-name">FunPlus Phoenix</div>
+                        </div>
+                      </div>
+
+                      <div class="odds-container">
+                        <div
+                          class="odd"
+                          data-testid="odd"
+                          onclick="showBetSlip()"
+                        >
+                          <!-- Add onclick event -->
+                          <span class="odd-coefficient">4.30</span>
+                        </div>
+                        <div
+                          class="odd"
+                          data-testid="odd"
+                          onclick="showBetSlip()"
+                        >
+                          <!-- Add onclick event -->
+                          <span class="odd-coefficient">1.18</span>
+                        </div>
+                        <div class="markets__count">+100</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Second Bet Container -->
+                  <div class="bet_container">
+                    <div class="header">
+                      <div class="game-time">14:45 | Sun 17 Mar 2024</div>
+                      <div class="select-container">
+                        <label for="game-select">&nbsp;</label>
+                        <select class="select-box" id="game-select">
+                          <option value="">Match</option>
+                          <option value="game1">Game 1</option>
+                          <option value="game2">Game 2</option>
+                          <option value="game3">Game 3</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="stats">
+                      <div class="teams-container">
+                        <div class="team">
+                          <img
+                            class="team-logo"
+                            src="https://statistics.betconstruct.com/images/e/m/317/634072.webp"
+                            alt="Team Logo"
+                          />
+                          <div class="team-name">Rare Atom</div>
+                        </div>
+                        <div class="team">
+                          <img
+                            class="team-logo"
+                            src="https://statistics.betconstruct.com/images/e/m/195/390642.webp"
+                            alt="Team Logo"
+                          />
+                          <div class="team-name">FunPlus Phoenix</div>
+                        </div>
+                      </div>
+
+                      <div class="odds-container">
+                        <div
+                          class="odd"
+                          data-testid="odd"
+                          onclick="showBetSlip()"
+                        >
+                          <!-- Add onclick event -->
+                          <span class="odd-coefficient">4.30</span>
+                        </div>
+                        <div
+                          class="odd"
+                          data-testid="odd"
+                          onclick="showBetSlip()"
+                        >
+                          <!-- Add onclick event -->
+                          <span class="odd-coefficient">1.18</span>
+                        </div>
+                        <div class="markets__count">+100</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End of Second Bet Container -->
+                </div>
+              </div>
+            </div>
+            <div id="basketballContent" style="display: none">
+              <h2>Basketball</h2>
+              <p>This is the basketball content.</p>
+              <div
+                class="sport-icon"
+                style="
+                  background-image: url('https://image.flaticon.com/icons/svg/1409/1409897.svg');
+                "
+              ></div>
+              <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                  <span
+                    class="flag-icon"
+                    style="
+                      background-image: url('https://cdn.jsdelivr.net/gh/lipis/flag-icon-css@0.10.1/flags/4x3/gb.svg');
+                    "
+                  ></span>
+                  United Kingdom
+                  <i class="fas fa-angle-down"></i>
+                  <!-- Angle down icon -->
+                  <i class="fas fa-angle-up" style="display: none"></i>
+                  <!-- Angle up icon -->
+                </div>
+                <div class="accordion-content">
+                  <p>Some content about the United Kingdom.</p>
+                </div>
+              </div>
+            </div>
+            <div id="tennisContent" style="display: none">
+              <h2>Tennis</h2>
+              <p>This is the tennis content.</p>
+              <div
+                class="sport-icon"
+                style="
+                  background-image: url('https://image.flaticon.com/icons/svg/1409/1409897.svg');
+                "
+              ></div>
+              <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                  <span
+                    class="flag-icon"
+                    style="
+                      background-image: url('https://cdn.jsdelivr.net/gh/lipis/flag-icon-css@0.10.1/flags/4x3/ca.svg');
+                    "
+                  ></span>
+                  Canada
+                  <i class="fas fa-angle-down"></i>
+                  <!-- Angle down icon -->
+                  <i class="fas fa-angle-up" style="display: none"></i>
+                  <!-- Angle up icon -->
+                </div>
+                <div class="accordion-content">
+                  <p>Some content about Canada.</p>
+                </div>
+              </div>
+            </div>
+            <!-- Add more content divs for additional tabs -->
+          </div>
+        </div>
+
+        <div class="sidebar-right">
+          <h2 style="margin-top: 1em; text-align: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Bet Slip</h2>
+          <!-- Bet slip card -->
+          <div class="bet-slip-card" id="bet-slip-card">
+            <div class="close-btn" onclick="hideBetSlip()"><b>X</b></div>
+            <div class="custom-betslip-body" data-testid="betslip-body">
+              <div class="custom-scrollArea">
+                  <div class="custom-betslipContainer single lastItem" role="button" tabindex="0" aria-disabled="false" aria-roledescription="sortable" aria-describedby="">
+                      <div class="custom-BetItemHeading betslipEventInfoPopup">
+                          <div class="custom-BetHeadingText betslip__bet-head-text single">
+                              <span class="custom-icon text-color"></span>
+                              <span class="custom-bet-item-name">Tencent LoL Pro League (LPL)</span>
+                          </div>
+                          <div class="custom-betslip__bet__actions">
+                              <span class="custom-action-icon"></span>
+                              <span class="custom-delete-icon"></span>
+                          </div>
+                      </div>
+                      <div class="custom-betItemContent">
+                          <div class="custom-BetEvent bet__event">
+                              <span class="custom-BetEventName"><span data-testid="betslip-game-teams">Ultra Prime - Oh My God</span></span>
+                              <div class="custom-BetDate">17 Mar</div>
+                          </div>
+                          <div class="custom-BetEvent bet__event">
+                              <span class="custom-BetEventMarketName">Match Winner</span>
+                              <div class="custom-BetDate">12:45</div>
+                          </div>
+                          <div class="custom-bet-container">
+                              <span class="custom-BetWinnerName">W2</span>
+                              <span class="custom-BetWinnerCoef">1.28</span>
+                          </div>
+                      </div>
+                      <div id="stakeField" class="custom-stake-field-container">
+                          <div class="custom-StakeWrapper">
+                              <div class="custom-input stakeField-antdInput">
+                                  <input id="stake-input" placeholder="Stake" maxlength="11" class="custom-input-field" type="text" value="" />
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="custom-betslip-switcher-wrapper" data-testid="book a bet">
+                  <div class="custom-betslip-switcher-container">
+                      <span class="custom-feature-info-icon"></span>Book A Bet
+                  </div>
+                  <div class="switch-button">
+                      <label class="custom-switch">
+                          <input type="checkbox" id="bet-toggle">
+                          <span class="custom-switch-slider"></span>
+                      </label>
+                  </div>
+              </div>
+          
+              <!-- New container for Bet/Ticket Number -->
+              <div id="bet-container" style="display: none;">
+                  <div class="bet-number-container">
+                      <label for="bet-number" style="font-size: 12px;">Bet/Ticket Number</label>
+                      <input type="text" id="bet-number" class="custom-input-field">
+                  </div>
+                  <button id="submit-bet" class="custom-place-bet-button">Stakes</button>
+              </div>
+              
+              <div id="singleFreeBetSwitcherPortalId"></div>
+              <div id="customFooter" class="custom-footer">
+                  <div class="custom-predefined-container">
+                      <button type="button" class="custom-predefined-button"><span>+10,000</span></button>
+                      <button type="button" class="custom-predefined-button"><span>+50,000</span></button>
+                      <button type="button" class="custom-predefined-button"><span>+100,000</span></button>
+                  </div>
+                  <div class="custom-footer-container">
+                      <div class="custom-total-return-box">
+                          <div class="custom-footer-label">Total Return</div>
+                          <div data-testid="total-return" class="custom-footer-value">
+                              <div class="custom-result-value betslip-amount">0</div>
+                          </div>
+                      </div>
+                      <div class="custom-button-group">
+                          <button data-testid="place-bet" type="button" class="custom-place-bet-button">Sign In and Bet</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify">
+              <i><b>Navybet - Elevate Your Betting Experience</b> </i> <br />
+
+              At Navybet, we redefine the online betting experience, offering a
+              comprehensive platform that seamlessly integrates sports and
+              casino betting. Whether you're a sports enthusiast or a casino
+              aficionado, we've got you covered with a diverse range of options
+              to suit every preference.
+            </p>
+          </div>
+
+          <div class="foot-grid">
+            <div class="col-xs-6 col-md-3">
+              <h6>Policies</h6>
+              <ul class="footer-links">
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">AML Policy</a></li>
+              </ul>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+              <h6>Quick Links</h6>
+              <ul class="footer-links">
+                <li><a href="">About Us</a></li>
+                <li><a href="">Contact Us</a></li>
+                <li><a href="">Terms and Conditions</a></li>
+                <li><a href="">FAQ</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr />
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">
+              Copyright &copy; 2024 All Rights Reserved by Navybet.
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li>
+                <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+              </li>
+              <li>
+                <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+              </li>
+              <li>
+                <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a>
+              </li>
+              <li>
+                <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/utils.js"></script>

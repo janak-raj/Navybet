@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submenu Sidebar with Toggle</title>
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+/* Basic CSS for sidebar */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    padding: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar a:hover {
+    background-color: #555;
+}
+
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+
+.submenu.active {
+    display: block;
+}
+
+.angle-icon {
+    margin-left: auto;
+}
+
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+    <ul>
+        <li><a href="#"><i class="fas fa-flag"></i> Home</a></li>
+        <li><a href="#"><i class="fas fa-flag"></i> About</a></li>
+        <li>
+            <a href="#" class="dropdown-toggle"><i class="fas fa-flag"></i> Services <i class="fas fa-angle-down angle-icon"></i></a>
+            <ul class="submenu">
+                <li><a href="#"><i class="fas fa-flag"></i> Web Design</a></li>
+                <li><a href="#"><i class="fas fa-flag"></i> Graphic Design</a></li>
+                <li><a href="#"><i class="fas fa-flag"></i> SEO</a></li>
+            </ul>
+        </li>
+        <li><a href="#"><i class="fas fa-flag"></i> Contact</a></li>
+    </ul>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const submenu = this.nextElementSibling;
+            submenu.classList.toggle('active');
+            const angleIcon = this.querySelector('.angle-icon');
+            angleIcon.classList.toggle('fa-angle-up');
+            angleIcon.classList.toggle('fa-angle-down');
+        });
+    });
+});
+</script>
+
+</body>
+</html>

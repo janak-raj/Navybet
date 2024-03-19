@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sidebar Submenu with Toggle</title>
+<!-- Include Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.game-side-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  padding-top: 20px;
+}
+
+.game-side-panel ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.game-side-panel li {
+  padding: 10px 20px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.game-side-panel li:hover {
+  background-color: #555;
+}
+
+.game-side-panel .gpactive {
+  background-color: #666;
+}
+
+.game-side-panel i {
+  margin-right: 10px;
+}
+
+.submenu {
+  display: none;
+}
+
+.submenu.active {
+  display: block;
+}
+
+.submenu li {
+  padding: 10px 40px;
+  color: #ddd;
+}
+
+.submenu li:hover {
+  background-color: #555;
+}
+
+.submenu li.active {
+  background-color: #666;
+}
+</style>
+</head>
+<body>
+
+<div class="game-side-panel">
+  <ul>
+    <li class="gpactive">
+      <i class="fas fa-angle-down toggle-icon"></i><i class="fa fa-home"></i> Home
+      <ul class="submenu active">
+        <li><i class="fa fa-dashboard"></i> Dashboard</li>
+        <li><i class="fa fa-user"></i> Profile</li>
+        <li><i class="fa fa-cog"></i> Settings</li>
+      </ul>
+    </li>
+    <li>
+      <i class="fa fa-envelope"></i> Messages
+    </li>
+    <li>
+      <i class="fa fa-bell"></i> Notifications
+    </li>
+  </ul>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleIcons = document.querySelectorAll('.toggle-icon');
+  const sidebarItems = document.querySelectorAll('.game-side-panel li');
+
+  toggleIcons.forEach(icon => {
+    icon.addEventListener('click', function() {
+      const submenu = this.nextElementSibling;
+      const allSubmenus = document.querySelectorAll('.submenu');
+      
+      // Hide all submenus
+      allSubmenus.forEach(item => {
+        if (item !== submenu) {
+          item.classList.remove('active');
+          const icon = item.previousElementSibling.querySelector('.toggle-icon');
+          icon.classList.replace('fa-angle-up', 'fa-angle-down');
+        }
+      });
+
+      submenu.classList.toggle('active');
+
+      if (submenu.classList.contains('active')) {
+        this.classList.replace('fa-angle-down', 'fa-angle-up');
+      } else {
+        this.classList.replace('fa-angle-up', 'fa-angle-down');
+      }
+    });
+  });
+
+  sidebarItems.forEach(item => {
+    item.addEventListener('click', function() {
+      sidebarItems.forEach(i => i.classList.remove('gpactive'));
+      this.classList.add('gpactive');
+
+      // Show submenu if available
+      const submenu = this.querySelector('.submenu');
+      if (submenu) {
+        submenu.classList.toggle('active');
+        const icon = this.querySelector('.toggle-icon');
+        if (submenu.classList.contains('active')) {
+          icon.classList.replace('fa-angle-down', 'fa-angle-up');
+        } else {
+          icon.classList.replace('fa-angle-up', 'fa-angle-down');
+        }
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
