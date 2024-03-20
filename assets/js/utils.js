@@ -158,3 +158,137 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// Function to open popup
+function openPopup() {
+  document.getElementById("popup-container").style.display = "block";
+}
+
+// Function to close popup
+function closePopup() {
+  document.getElementById("popup-container").style.display = "none";
+  //refreshPage();
+}
+
+// Function to refresh the page
+function refreshPage() {
+  location.reload(); // Reload the page
+}
+
+
+// Function to toggle between login and registration form
+function toggleForm() {
+  var loginForm = document.getElementById("login-form");
+  var registerForm = document.getElementById("register-form");
+  var popupHeader = document.querySelector(".popup-header h2");
+  var footerText = document.querySelector(".popup-footer p:last-child");
+
+  if (popupHeader.textContent === "Login") {
+    loginForm.reset();
+    popupHeader.textContent = "Register";
+    footerText.innerHTML = "Already have an account? <a href='#' onclick='toggleForm()'>Login</a>";
+    loginForm.style.display = "none";
+    registerForm.style.display = "block";
+  } else if (popupHeader.textContent === "Forgot Password?") {
+    toggleForgotPasswordForm();
+  } else {
+    loginForm.reset();
+    popupHeader.textContent = "Login";
+    footerText.innerHTML = "Don't have an account? <a href='#' onclick='toggleForm()'>Register</a>";
+    registerForm.style.display = "none";
+    loginForm.style.display = "block";
+  }
+}
+
+function toggleLogForm() {
+    var loginForm = document.getElementById("login-form");
+  var registerForm = document.getElementById("register-form");
+  var popupHeader = document.querySelector(".popup-header h2");
+  var footerText = document.querySelector(".popup-footer p:last-child");
+  var resetForm = document.getElementById("reset-form");
+
+  loginForm.reset();
+    popupHeader.textContent = "Login";
+    footerText.style.display = "block";
+    footerText.innerHTML = "Don't have an account? <a href='#' onclick='toggleForm()'>Register</a>";
+    registerForm.style.display = "none";
+    loginForm.style.display = "block";
+
+    resetForm.style.display = "none";  
+}
+
+function toggleRegForm() {
+    var loginForm = document.getElementById("login-form");
+  var registerForm = document.getElementById("register-form");
+  var popupHeader = document.querySelector(".popup-header h2");
+  var footerText = document.querySelector(".popup-footer p:last-child");
+  var resetForm = document.getElementById("reset-form");
+
+    loginForm.reset();
+    popupHeader.textContent = "Register";
+    footerText.style.display = "block";
+    footerText.innerHTML = "Already have an account? <a href='#' onclick='toggleForm()'>Login</a>";
+    loginForm.style.display = "none";
+    registerForm.style.display = "block";
+
+    resetForm.style.display = "none";    
+}
+
+// Function to handle forgot password
+function forgotPassword() {
+  var resetForm = document.getElementById("reset-form");
+  var popupHeader = document.querySelector(".popup-header h2");
+  var footerText = document.querySelector(".popup-footer p:first-child");
+
+  //resetForm.reset();
+  popupHeader.textContent = "Forgot Password?";
+  footerText.style.display = "none";
+  toggleForgotPasswordForm();
+}
+
+// Function to toggle between login and reset password forms
+function toggleForgotPasswordForm() {
+  var loginForm = document.getElementById("login-form");
+  var resetForm = document.getElementById("reset-form");
+  var popupHeader = document.querySelector(".popup-header h2");
+
+  if (popupHeader.textContent === "Forgot Password?") {
+    loginForm.style.display = "none";
+    resetForm.style.display = "block";
+  } else {
+    loginForm.style.display = "block";
+    resetForm.style.display = "none";
+  }
+}
+
+// Function to toggle password visibility for login form
+function togglePasswordVisibility() {
+  var passwordInput = document.getElementById("password");
+  var icon = document.querySelector(".toggle-password i");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    passwordInput.type = "password";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  }
+}
+
+// Function to toggle password visibility for registration form
+function toggleNewPasswordVisibility() {
+  var passwordInput = document.getElementById("new-password");
+  var icon = document.querySelector(".toggle-password i");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    passwordInput.type = "password";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  }
+}

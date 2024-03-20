@@ -1,0 +1,79 @@
+<style>
+    .carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+}
+
+.carousel-slide {
+  flex: 0 0 auto;
+  width: 100%;
+  transition: transform 0.5s ease;
+}
+
+.carousel-slide img {
+  width: 100%;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 100;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+</style>
+<div class="carousel-container">
+    <div class="carousel">
+      <div class="carousel-slide">
+        <img src="image1.jpg" alt="Image 1">
+      </div>
+      <div class="carousel-slide">
+        <img src="image2.jpg" alt="Image 2">
+      </div>
+      <div class="carousel-slide">
+        <img src="image3.jpg" alt="Image 3">
+      </div>
+    </div>
+    <button class="prev" onclick="prevSlide()">&#10094;</button>
+    <button class="next" onclick="nextSlide()">&#10095;</button>
+  </div>
+  <script>
+    let currentIndex = 0;
+const slides = document.querySelectorAll('.carousel-slide');
+const totalSlides = slides.length;
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.style.transform = `translateX(${100 * (i - index)}%)`;
+  });
+}
+
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % totalSlides;
+  showSlide(currentIndex);
+}
+
+function prevSlide() {
+  currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+  showSlide(currentIndex);
+}
+
+  </script>

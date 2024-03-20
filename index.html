@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Navybet</title>
     <link rel="stylesheet" href="assets/css/app.css" />
+    <link rel="stylesheet" href="assets/css/utils.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <style>
-      
-    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style></style>
   </head>
   <body>
     <div class="navigation">
@@ -22,7 +25,7 @@
           <div class="line2"></div>
           <div class="line3"></div>
         </div>
-        
+
         <ul class="nav-links">
           <li><a href="pages/live.html">Live</a></li>
           <li><a href="pages/sports.html">Sports</a></li>
@@ -36,13 +39,22 @@
             <a onmouseover="dropSubMenu()" class="dropbtn">Tournaments</a>
             <div id="myDropdown" class="dropdown-content">
               <ul>
-                <li><a href="pages/sport-tournaments.html">Sport Tournaments</a></li>
-                <li><a href="pages/casino-tournaments.html">Casino Tournaments</a></li>
+                <li>
+                  <a href="pages/sport-tournaments.html">Sport Tournaments</a>
+                </li>
+                <li>
+                  <a href="pages/casino-tournaments.html">Casino Tournaments</a>
+                </li>
               </ul>
             </div>
           </li>
-          <li><a href="pages/auth.html"><button class="login-button">Log In</button></a></li>
-          <li><a href="pages/auth.html"><button class="join-button">Sign Up</button></a></li>
+          <li>
+            <button class="login-button" onclick="openPopup()">Log In</button>
+          </li>
+          <li>
+
+              <button class="join-button" onclick="openPopup()">Sign Up</button>
+          </li>
         </ul>
       </nav>
     </div>
@@ -53,62 +65,94 @@
           <div class="slide_viewer">
             <div class="slide_group">
               <div class="slide">
-                <img src="assets/imgs/slider_thumbs/s.webp" alt="" srcset="">
+                <img src="assets/imgs/slider_thumbs/s.webp" alt="" srcset="" />
               </div>
               <div class="slide">
-                <img src="assets/imgs/slider_thumbs/s1.webp" alt="" srcset="">
+                <img src="assets/imgs/slider_thumbs/s1.webp" alt="" srcset="" />
               </div>
               <div class="slide">
-                <img src="assets/imgs/slider_thumbs/s4.webp" alt="" srcset="">
+                <img src="assets/imgs/slider_thumbs/s4.webp" alt="" srcset="" />
               </div>
               <div class="slide">
-                <img src="assets/imgs/slider_thumbs/s3.webp" alt="" srcset="">
+                <img src="assets/imgs/slider_thumbs/s3.webp" alt="" srcset="" />
               </div>
               <div class="slide">
-                <img src="assets/imgs/slider_thumbs/s.webp" alt="" srcset="">
+                <img src="assets/imgs/slider_thumbs/s.webp" alt="" srcset="" />
               </div>
               <div class="slide">
-                <img src="assets/imgs/slider_thumbs/s1.webp" alt="" srcset="">
+                <img src="assets/imgs/slider_thumbs/s1.webp" alt="" srcset="" />
               </div>
               <div class="slide">
-                <img src="assets/imgs/slider_thumbs/s4.webp" alt="" srcset="">
+                <img src="assets/imgs/slider_thumbs/s4.webp" alt="" srcset="" />
               </div>
               <div class="slide">
-                <img src="assets/imgs/slider_thumbs/s3.webp" alt="" srcset="">
+                <img src="assets/imgs/slider_thumbs/s3.webp" alt="" srcset="" />
               </div>
             </div>
           </div>
-        </div><!-- End // .slider -->
-        
-        <div class="slide_buttons">
         </div>
-        
+        <!-- End // .slider -->
+
+        <div class="slide_buttons"></div>
+
         <div class="directional_nav">
           <div class="previous_btn" title="Previous">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="65px" height="65px" viewBox="-11 -11.5 65 66">
+            <svg
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              width="65px"
+              height="65px"
+              viewBox="-11 -11.5 65 66"
+            >
               <g>
                 <g>
-                  <path fill="#474544" d="M-10.5,22.118C-10.5,4.132,4.133-10.5,22.118-10.5S54.736,4.132,54.736,22.118
-              c0,17.985-14.633,32.618-32.618,32.618S-10.5,40.103-10.5,22.118z M-8.288,22.118c0,16.766,13.639,30.406,30.406,30.406 c16.765,0,30.405-13.641,30.405-30.406c0-16.766-13.641-30.406-30.405-30.406C5.35-8.288-8.288,5.352-8.288,22.118z"/>
-                  <path fill="#474544" d="M25.43,33.243L14.628,22.429c-0.433-0.432-0.433-1.132,0-1.564L25.43,10.051c0.432-0.432,1.132-0.432,1.563,0	c0.431,0.431,0.431,1.132,0,1.564L16.972,21.647l10.021,10.035c0.432,0.433,0.432,1.134,0,1.564	c-0.215,0.218-0.498,0.323-0.78,0.323C25.929,33.569,25.646,33.464,25.43,33.243z"/>
+                  <path
+                    fill="#474544"
+                    d="M-10.5,22.118C-10.5,4.132,4.133-10.5,22.118-10.5S54.736,4.132,54.736,22.118
+              c0,17.985-14.633,32.618-32.618,32.618S-10.5,40.103-10.5,22.118z M-8.288,22.118c0,16.766,13.639,30.406,30.406,30.406 c16.765,0,30.405-13.641,30.405-30.406c0-16.766-13.641-30.406-30.405-30.406C5.35-8.288-8.288,5.352-8.288,22.118z"
+                  />
+                  <path
+                    fill="#474544"
+                    d="M25.43,33.243L14.628,22.429c-0.433-0.432-0.433-1.132,0-1.564L25.43,10.051c0.432-0.432,1.132-0.432,1.563,0	c0.431,0.431,0.431,1.132,0,1.564L16.972,21.647l10.021,10.035c0.432,0.433,0.432,1.134,0,1.564	c-0.215,0.218-0.498,0.323-0.78,0.323C25.929,33.569,25.646,33.464,25.43,33.243z"
+                  />
                 </g>
               </g>
             </svg>
           </div>
           <div class="next_btn" title="Next">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="65px" height="65px" viewBox="-11 -11.5 65 66">
+            <svg
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              width="65px"
+              height="65px"
+              viewBox="-11 -11.5 65 66"
+            >
               <g>
                 <g>
-                  <path fill="#474544" d="M22.118,54.736C4.132,54.736-10.5,40.103-10.5,22.118C-10.5,4.132,4.132-10.5,22.118-10.5	c17.985,0,32.618,14.632,32.618,32.618C54.736,40.103,40.103,54.736,22.118,54.736z M22.118-8.288	c-16.765,0-30.406,13.64-30.406,30.406c0,16.766,13.641,30.406,30.406,30.406c16.768,0,30.406-13.641,30.406-30.406 C52.524,5.352,38.885-8.288,22.118-8.288z"/>
-                  <path fill="#474544" d="M18.022,33.569c 0.282,0-0.566-0.105-0.781-0.323c-0.432-0.431-0.432-1.132,0-1.564l10.022-10.035 			L17.241,11.615c 0.431-0.432-0.431-1.133,0-1.564c0.432-0.432,1.132-0.432,1.564,0l10.803,10.814c0.433,0.432,0.433,1.132,0,1.564 L18.805,33.243C18.59,33.464,18.306,33.569,18.022,33.569z"/>
+                  <path
+                    fill="#474544"
+                    d="M22.118,54.736C4.132,54.736-10.5,40.103-10.5,22.118C-10.5,4.132,4.132-10.5,22.118-10.5	c17.985,0,32.618,14.632,32.618,32.618C54.736,40.103,40.103,54.736,22.118,54.736z M22.118-8.288	c-16.765,0-30.406,13.64-30.406,30.406c0,16.766,13.641,30.406,30.406,30.406c16.768,0,30.406-13.641,30.406-30.406 C52.524,5.352,38.885-8.288,22.118-8.288z"
+                  />
+                  <path
+                    fill="#474544"
+                    d="M18.022,33.569c 0.282,0-0.566-0.105-0.781-0.323c-0.432-0.431-0.432-1.132,0-1.564l10.022-10.035 			L17.241,11.615c 0.431-0.432-0.431-1.133,0-1.564c0.432-0.432,1.132-0.432,1.564,0l10.803,10.814c0.433,0.432,0.433,1.132,0,1.564 L18.805,33.243C18.59,33.464,18.306,33.569,18.022,33.569z"
+                  />
                 </g>
               </g>
             </svg>
           </div>
-        </div><!-- End // .directional_nav -->
+        </div>
+        <!-- End // .directional_nav -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
       </section>
       <div class="game-cats">
+        <hr style="border: 1px solid gold;">
         <a href="" alt="Mythrill" target="_blank">
           <div class="card">
             <div class="wrapper">
@@ -168,22 +212,135 @@
             <img src="assets/imgs/E-sports.webp" class="character" />
           </div>
         </a>
+        <hr style="border: 1px solid gold;">
       </div>
 
       <section style="height: 20em; background-color: #131418">
-        <h2 style="background-color: #131418; padding-left: 10px">
-          Popular Events
-        </h2>
+        <div class="jsx-331303593 eats-title-component">Popular Events</div>
 
-        <h3>New Updates</h3>
-        <p>All of this functionality are going to be added! Don't look at the design for now..... Working on functinality first.</p>
-        <p>Below are the file links:</p>
-        <div>
-          <ul>
-            <li><a href="test.html">E-Sports Container</a></li>
-            <li><a href="bet.html">Betting Functionality</a></li>
-          </ul>
-        </div>
+        <div class="vs-card-container">
+    
+          <div class="custom-carousel">
+              <div class="vs-card">
+                  <div class="header">
+                    <div class="league-name">Premier League</div>
+                    <div class="set-info">
+                      <div class="set-name">Match Set A</div>
+                      <div class="date">March 25, 2024</div>
+                      <div class="star-icon"><i class="fas fa-star"></i></div>
+                    </div>
+                  </div>
+                  <div class="teams">
+                    <div class="team">
+                      <img src="assets/flags/1x1/ae.svg" alt="Team 1 Logo"><br>
+                      <div class="team-name">Team 1</div>
+                      <div class="points">5</div>
+                    </div>
+                    <div class="versus">VS</div>
+                    <div class="team">
+                      <img src="assets/flags/1x1/af.svg" alt="Team 2 Logo"><br>
+                      <div class="team-name">Team 2</div>
+                      <div class="points">3</div>
+                    </div>
+                  </div>
+                  <div class="footer">
+                    <button class="odd" onclick="highlight(this)">2.1</button>
+                    <button class="odd" onclick="highlight(this)">3.0</button>
+                    <button class="odd" onclick="highlight(this)">2.5</button>
+                  </div>
+                </div>
+      
+                <div class="vs-card">
+                  <div class="header">
+                    <div class="league-name">Premier League</div>
+                    <div class="set-info">
+                      <div class="set-name">Match Set A</div>
+                      <div class="date">March 25, 2024</div>
+                      <div class="star-icon"><i class="fas fa-star"></i></div>
+                    </div>
+                  </div>
+                  <div class="teams">
+                    <div class="team">
+                      <img src="assets/flags/1x1/us.svg" alt="Team 1 Logo"><br>
+                      <div class="team-name">Team 1</div>
+                      <div class="points">5</div>
+                    </div>
+                    <div class="versus">VS</div>
+                    <div class="team">
+                      <img src="assets/flags/1x1/gb-eng.svg" alt="Team 2 Logo"><br>
+                      <div class="team-name">Team 2</div>
+                      <div class="points">3</div>
+                    </div>
+                  </div>
+                  <div class="footer">
+                    <button class="odd" onclick="highlight(this)">2.1</button>
+                    <button class="odd" onclick="highlight(this)">3.0</button>
+                    <button class="odd" onclick="highlight(this)">2.5</button>
+                  </div>
+                </div>
+      
+                <div class="vs-card">
+                  <div class="header">
+                    <div class="league-name">Premier League</div>
+                    <div class="set-info">
+                      <div class="set-name">Match Set A</div>
+                      <div class="date">March 25, 2024</div>
+                      <div class="star-icon"><i class="fas fa-star"></i></div>
+                    </div>
+                  </div>
+                  <div class="teams">
+                    <div class="team">
+                      <img src="assets/flags/1x1/ae.svg" alt="Team 1 Logo"><br>
+                      <div class="team-name">Team 1</div>
+                      <div class="points">5</div>
+                    </div>
+                    <div class="versus">VS</div>
+                    <div class="team">
+                      <img src="assets/flags/1x1/af.svg" alt="Team 2 Logo"><br>
+                      <div class="team-name">Team 2</div>
+                      <div class="points">3</div>
+                    </div>
+                  </div>
+                  <div class="footer">
+                    <button class="odd" onclick="highlight(this)">2.1</button>
+                    <button class="odd" onclick="highlight(this)">3.0</button>
+                    <button class="odd" onclick="highlight(this)">2.5</button>
+                  </div>
+                </div>
+      
+                <div class="vs-card">
+                  <div class="header">
+                    <div class="league-name">Premier League</div>
+                    <div class="set-info">
+                      <div class="set-name">Match Set A</div>
+                      <div class="date">March 25, 2024</div>
+                      <div class="star-icon"><i class="fas fa-star"></i></div>
+                    </div>
+                  </div>
+                  <div class="teams">
+                    <div class="team">
+                      <img src="assets/flags/1x1/us.svg" alt="Team 1 Logo"><br>
+                      <div class="team-name">Team 1</div>
+                      <div class="points">5</div>
+                    </div>
+                    <div class="versus">VS</div>
+                    <div class="team">
+                      <img src="assets/flags/1x1/gb-eng.svg" alt="Team 2 Logo"><br>
+                      <div class="team-name">Team 2</div>
+                      <div class="points">3</div>
+                    </div>
+                  </div>
+                  <div class="footer">
+                    <button class="odd" onclick="highlight(this)">2.1</button>
+                    <button class="odd" onclick="highlight(this)">3.0</button>
+                    <button class="odd" onclick="highlight(this)">2.5</button>
+                  </div>
+                </div>
+              <!-- Add more vs-card elements as needed -->
+          </div>
+          <button class="custom-prev" onclick="prevCustomSlide()">&#10094;</button>
+          <button class="custom-next" onclick="nextCustomSlide()">&#10095;</button>
+      </div>
       </section>
 
       <section style="background-color: #131418">
@@ -237,8 +394,8 @@
                                     d="M18.357 8.709c.207 4.615-3.235 9.761-9.327 9.761A9.277 9.277 0 014 16.995a6.595 6.595 0 004.858-1.359 3.285 3.285 0 01-3.066-2.279c.514.099 1.02.07 1.482-.056-1.578-.316-2.668-1.738-2.632-3.258.443.246.949.393 1.486.41a3.285 3.285 0 01-1.015-4.381 9.316 9.316 0 006.764 3.429c-.478-2.053 1.078-4.03 3.197-4.03.943 0 1.796.399 2.395 1.036a6.584 6.584 0 002.084-.796 3.3 3.3 0 01-1.443 1.816 6.546 6.546 0 001.884-.518 6.637 6.637 0 01-1.637 1.7z"
                                   ></path>
                                 </svg>
-                              </div> </a
-                            >
+                              </div>
+                            </a>
                           </div>
                         </div>
                         <div
@@ -294,8 +451,8 @@
                                     d="M18.357 8.709c.207 4.615-3.235 9.761-9.327 9.761A9.277 9.277 0 014 16.995a6.595 6.595 0 004.858-1.359 3.285 3.285 0 01-3.066-2.279c.514.099 1.02.07 1.482-.056-1.578-.316-2.668-1.738-2.632-3.258.443.246.949.393 1.486.41a3.285 3.285 0 01-1.015-4.381 9.316 9.316 0 006.764 3.429c-.478-2.053 1.078-4.03 3.197-4.03.943 0 1.796.399 2.395 1.036a6.584 6.584 0 002.084-.796 3.3 3.3 0 01-1.443 1.816 6.546 6.546 0 001.884-.518 6.637 6.637 0 01-1.637 1.7z"
                                   ></path>
                                 </svg>
-                              </div> </a
-                            >
+                              </div>
+                            </a>
                           </div>
                         </div>
                         <div
@@ -327,9 +484,7 @@
                             >
                               Sic Bo Creedzroom
                             </div>
-                            <div class="revho-func-data-default">
-                              Casino
-                            </div>
+                            <div class="revho-func-data-default">Casino</div>
                           </div>
                           <div
                             class="jsx-908247444 revho-func-card-socials-component"
@@ -352,8 +507,8 @@
                                     d="M8.347 18.667H5.593V9.778h2.754v8.889zM6.957 8.613c-.899 0-1.628-.734-1.628-1.64 0-.905.729-1.64 1.628-1.64.9 0 1.628.735 1.628 1.64 0 .906-.729 1.64-1.628 1.64zm11.706 10.054h-2.74V14c0-1.28-.486-1.994-1.499-1.994-1.101 0-1.677.744-1.677 1.994v4.666h-2.64V9.778h2.64v1.197s.794-1.468 2.68-1.468c1.886 0 3.236 1.152 3.236 3.532v5.628z"
                                   ></path>
                                 </svg>
-                              </div> </a
-                            >
+                              </div>
+                            </a>
                           </div>
                         </div>
                         <div
@@ -408,8 +563,8 @@
                                     d="M18.357 8.709c.207 4.615-3.235 9.761-9.327 9.761A9.277 9.277 0 014 16.995a6.595 6.595 0 004.858-1.359 3.285 3.285 0 01-3.066-2.279c.514.099 1.02.07 1.482-.056-1.578-.316-2.668-1.738-2.632-3.258.443.246.949.393 1.486.41a3.285 3.285 0 01-1.015-4.381 9.316 9.316 0 006.764 3.429c-.478-2.053 1.078-4.03 3.197-4.03.943 0 1.796.399 2.395 1.036a6.584 6.584 0 002.084-.796 3.3 3.3 0 01-1.443 1.816 6.546 6.546 0 001.884-.518 6.637 6.637 0 01-1.637 1.7z"
                                   ></path>
                                 </svg>
-                              </div> </a
-                            >
+                              </div>
+                            </a>
                           </div>
                         </div>
                         <div
@@ -484,8 +639,8 @@
                                     d="M18.357 8.709c.207 4.615-3.235 9.761-9.327 9.761A9.277 9.277 0 014 16.995a6.595 6.595 0 004.858-1.359 3.285 3.285 0 01-3.066-2.279c.514.099 1.02.07 1.482-.056-1.578-.316-2.668-1.738-2.632-3.258.443.246.949.393 1.486.41a3.285 3.285 0 01-1.015-4.381 9.316 9.316 0 006.764 3.429c-.478-2.053 1.078-4.03 3.197-4.03.943 0 1.796.399 2.395 1.036a6.584 6.584 0 002.084-.796 3.3 3.3 0 01-1.443 1.816 6.546 6.546 0 001.884-.518 6.637 6.637 0 01-1.637 1.7z"
                                   ></path>
                                 </svg>
-                              </div> </a
-                            >
+                              </div>
+                            </a>
                           </div>
                         </div>
                         <div
@@ -541,8 +696,8 @@
                                     d="M18.357 8.709c.207 4.615-3.235 9.761-9.327 9.761A9.277 9.277 0 014 16.995a6.595 6.595 0 004.858-1.359 3.285 3.285 0 01-3.066-2.279c.514.099 1.02.07 1.482-.056-1.578-.316-2.668-1.738-2.632-3.258.443.246.949.393 1.486.41a3.285 3.285 0 01-1.015-4.381 9.316 9.316 0 006.764 3.429c-.478-2.053 1.078-4.03 3.197-4.03.943 0 1.796.399 2.395 1.036a6.584 6.584 0 002.084-.796 3.3 3.3 0 01-1.443 1.816 6.546 6.546 0 001.884-.518 6.637 6.637 0 01-1.637 1.7z"
                                   ></path>
                                 </svg>
-                              </div> </a
-                            >
+                              </div>
+                            </a>
                           </div>
                         </div>
                         <div
@@ -574,9 +729,7 @@
                             >
                               Deadly Diamond
                             </div>
-                            <div class="revho-func-data-default">
-                              Slot
-                            </div>
+                            <div class="revho-func-data-default">Slot</div>
                           </div>
                           <div
                             class="jsx-908247444 revho-func-card-socials-component"
@@ -599,8 +752,8 @@
                                     d="M8.347 18.667H5.593V9.778h2.754v8.889zM6.957 8.613c-.899 0-1.628-.734-1.628-1.64 0-.905.729-1.64 1.628-1.64.9 0 1.628.735 1.628 1.64 0 .906-.729 1.64-1.628 1.64zm11.706 10.054h-2.74V14c0-1.28-.486-1.994-1.499-1.994-1.101 0-1.677.744-1.677 1.994v4.666h-2.64V9.778h2.64v1.197s.794-1.468 2.68-1.468c1.886 0 3.236 1.152 3.236 3.532v5.628z"
                                   ></path>
                                 </svg>
-                              </div> </a
-                            >
+                              </div>
+                            </a>
                           </div>
                         </div>
                         <div
@@ -655,8 +808,8 @@
                                     d="M18.357 8.709c.207 4.615-3.235 9.761-9.327 9.761A9.277 9.277 0 014 16.995a6.595 6.595 0 004.858-1.359 3.285 3.285 0 01-3.066-2.279c.514.099 1.02.07 1.482-.056-1.578-.316-2.668-1.738-2.632-3.258.443.246.949.393 1.486.41a3.285 3.285 0 01-1.015-4.381 9.316 9.316 0 006.764 3.429c-.478-2.053 1.078-4.03 3.197-4.03.943 0 1.796.399 2.395 1.036a6.584 6.584 0 002.084-.796 3.3 3.3 0 01-1.443 1.816 6.546 6.546 0 001.884-.518 6.637 6.637 0 01-1.637 1.7z"
                                   ></path>
                                 </svg>
-                              </div> </a
-                            >
+                              </div>
+                            </a>
                           </div>
                         </div>
                         <div
@@ -680,151 +833,288 @@
           </div>
         </div>
       </section>
-    </main>
 
-      <!-- Site footer -->
-      <footer class="site-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12 col-md-6">
-              <h6>About</h6>
-              <p class="text-justify"> <i><b>Navybet - Elevate Your Betting Experience</b> </i> <br>
-
-                At Navybet, we redefine the online betting experience, offering a comprehensive platform that seamlessly integrates sports and casino betting. Whether you're a sports enthusiast or a casino aficionado, we've got you covered with a diverse range of options to suit every preference.</p>
+      <!-- Login & Registration Popup -->
+      <div class="popup-container" id="popup-container">
+        <div class="popup" id="popup">
+          <div class="popup-content">
+            <div class="popup-header">
+              <h2>Login</h2>
+              <span class="close" onclick="closePopup()">&times;</span>
             </div>
-  
-            <div class="foot-grid">
-              <div class="col-xs-6 col-md-3">
-                <h6>Policies</h6>
-                <ul class="footer-links">
-                  <li><a href="">Privacy Policy</a></li>
-                  <li><a href="">AML Policy</a></li>
-                </ul>
+            <form id="login-form" class="form">
+              <div class="form-group">
+                <label for="username"><i class="fas fa-user"></i></label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Username"
+                  required
+                />
               </div>
-    
-              <div class="col-xs-6 col-md-3">
-                <h6>Quick Links</h6>
-                <ul class="footer-links">
-                  <li><a href="">About Us</a></li>
-                  <li><a href="">Contact Us</a></li>
-                  <li><a href="">Terms and Conditions</a></li>
-                  <li><a href="">FAQ</a></li>
-                </ul>
+              <div class="form-group">
+                <label for="password"><i class="fas fa-lock"></i></label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Password"
+                  required
+                />
+                <span
+                  class="toggle-password"
+                  onclick="togglePasswordVisibility()"
+                  ><i class="fas fa-eye"></i
+                ></span>
+              </div>
+              <button type="submit" class="btn">Login</button>
+              <div class="sub-links">
+                <p>
+                  <a href="#" onclick="forgotPassword()">Forgot Password?</a>
+                </p>
+              </div>
+            </form>
+            <form id="register-form" class="form" style="display: none">
+              <div class="form-group">
+                <label for="new-username"><i class="fas fa-user"></i></label>
+                <input
+                  type="text"
+                  id="new-username"
+                  name="new-username"
+                  placeholder="Username"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="new-email"><i class="fas fa-envelope"></i></label>
+                <input
+                  type="email"
+                  id="new-email"
+                  name="new-email"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="new-password"><i class="fas fa-lock"></i></label>
+                <input
+                  type="password"
+                  id="new-password"
+                  name="new-password"
+                  placeholder="Password"
+                  required
+                />
+                <span
+                  class="toggle-password"
+                  onclick="toggleNewPasswordVisibility()"
+                  ><i class="fas fa-eye"></i
+                ></span>
+              </div>
+              <button type="submit" class="btn">Register</button>
+            </form>
+            <div id="reset-form" class="reset-password" style="display: none">
+              <p style="text-align: center; margin-bottom: .5em;">
+                Enter your email to reset your password:
+              </p>
+              <form class="form">
+                <div class="form-group">
+                  <label for="email"><i class="fas fa-envelope"></i></label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn">Reset Password</button>
+              </form>
+              <div class="sub-links">
+                <p>
+                  Don't have an account?
+                  <a href="#" onclick="toggleRegForm()">Register</a>
+                </p>
+                <p>
+                  Back to login? <a href="#" onclick="toggleLogForm()">Login</a>
+                </p>
               </div>
             </div>
-          </div>
-          <hr>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8 col-sm-6 col-xs-12">
-              <p class="copyright-text">Copyright &copy; 2024 All Rights Reserved by Navybet.
-           
+            <div class="popup-footer">
+              <p>
+                Don't have an account?
+                <a href="#" onclick="toggleForm()">Register</a>
               </p>
             </div>
-  
-            <div class="col-md-4 col-sm-6 col-xs-12">
-              <ul class="social-icons">
-                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify">
+              <i><b>Navybet - Elevate Your Betting Experience</b> </i> <br />
+
+              At Navybet, we redefine the online betting experience, offering a
+              comprehensive platform that seamlessly integrates sports and
+              casino betting. Whether you're a sports enthusiast or a casino
+              aficionado, we've got you covered with a diverse range of options
+              to suit every preference.
+            </p>
+          </div>
+
+          <div class="foot-grid">
+            <div class="col-xs-6 col-md-3">
+              <h6>Policies</h6>
+              <ul class="footer-links">
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">AML Policy</a></li>
+              </ul>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+              <h6>Quick Links</h6>
+              <ul class="footer-links">
+                <li><a href="">About Us</a></li>
+                <li><a href="">Contact Us</a></li>
+                <li><a href="">Terms and Conditions</a></li>
+                <li><a href="">FAQ</a></li>
               </ul>
             </div>
           </div>
         </div>
-  </footer>
+        <hr />
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">
+              Copyright &copy; 2024 All Rights Reserved by Navybet.
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li>
+                <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+              </li>
+              <li>
+                <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+              </li>
+              <li>
+                <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a>
+              </li>
+              <li>
+                <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
 <script src="assets/js/app.js"></script>
+<script src="assets/js/utils.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script>
-  $('.slider').each(function() {
-  var $this = $(this);
-  var $group = $this.find('.slide_group');
-  var $slides = $this.find('.slide');
-  var bulletArray = [];
-  var currentIndex = 0;
-  var timeout;
-  
-  function move(newIndex) {
-    var animateLeft, slideLeft;
-    
-    advance();
-    
-    if ($group.is(':animated') || currentIndex === newIndex) {
-      return;
-    }
-    
-    bulletArray[currentIndex].removeClass('active');
-    bulletArray[newIndex].addClass('active');
-    
-    if (newIndex > currentIndex) {
-      slideLeft = '100%';
-      animateLeft = '-100%';
-    } else {
-      slideLeft = '-100%';
-      animateLeft = '100%';
-    }
-    
-    $slides.eq(newIndex).css({
-      display: 'block',
-      left: slideLeft
-    });
-    $group.animate({
-      left: animateLeft
-    }, function() {
-      $slides.eq(currentIndex).css({
-        display: 'none'
-      });
+  $(".slider").each(function () {
+    var $this = $(this);
+    var $group = $this.find(".slide_group");
+    var $slides = $this.find(".slide");
+    var bulletArray = [];
+    var currentIndex = 0;
+    var timeout;
+
+    function move(newIndex) {
+      var animateLeft, slideLeft;
+
+      advance();
+
+      if ($group.is(":animated") || currentIndex === newIndex) {
+        return;
+      }
+
+      bulletArray[currentIndex].removeClass("active");
+      bulletArray[newIndex].addClass("active");
+
+      if (newIndex > currentIndex) {
+        slideLeft = "100%";
+        animateLeft = "-100%";
+      } else {
+        slideLeft = "-100%";
+        animateLeft = "100%";
+      }
+
       $slides.eq(newIndex).css({
-        left: 0
+        display: "block",
+        left: slideLeft,
       });
-      $group.css({
-        left: 0
-      });
-      currentIndex = newIndex;
-    });
-  }
-  
-  function advance() {
-    clearTimeout(timeout);
-    timeout = setTimeout(function() {
-      if (currentIndex < ($slides.length - 1)) {
+      $group.animate(
+        {
+          left: animateLeft,
+        },
+        function () {
+          $slides.eq(currentIndex).css({
+            display: "none",
+          });
+          $slides.eq(newIndex).css({
+            left: 0,
+          });
+          $group.css({
+            left: 0,
+          });
+          currentIndex = newIndex;
+        }
+      );
+    }
+
+    function advance() {
+      clearTimeout(timeout);
+      timeout = setTimeout(function () {
+        if (currentIndex < $slides.length - 1) {
+          move(currentIndex + 1);
+        } else {
+          move(0);
+        }
+      }, 4000);
+    }
+
+    $(".next_btn").on("click", function () {
+      if (currentIndex < $slides.length - 1) {
         move(currentIndex + 1);
       } else {
         move(0);
       }
-    }, 4000);
-  }
-  
-  $('.next_btn').on('click', function() {
-    if (currentIndex < ($slides.length - 1)) {
-      move(currentIndex + 1);
-    } else {
-      move(0);
-    }
+    });
+
+    $(".previous_btn").on("click", function () {
+      if (currentIndex !== 0) {
+        move(currentIndex - 1);
+      } else {
+        move(3);
+      }
+    });
+
+    $.each($slides, function (index) {
+      var $button = $('<a class="slide_btn">&bull;</a>');
+
+      if (index === currentIndex) {
+        $button.addClass("active");
+      }
+      $button
+        .on("click", function () {
+          move(index);
+        })
+        .appendTo(".slide_buttons");
+      bulletArray.push($button);
+    });
+
+    advance();
   });
-  
-  $('.previous_btn').on('click', function() {
-    if (currentIndex !== 0) {
-      move(currentIndex - 1);
-    } else {
-      move(3);
-    }
-  });
-  
-  $.each($slides, function(index) {
-    var $button = $('<a class="slide_btn">&bull;</a>');
-    
-    if (index === currentIndex) {
-      $button.addClass('active');
-    }
-    $button.on('click', function() {
-      move(index);
-    }).appendTo('.slide_buttons');
-    bulletArray.push($button);
-  });
-  
-  advance();
-});
 </script>

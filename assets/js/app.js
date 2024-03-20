@@ -30,4 +30,29 @@ window.onclick = function(event) {
   }
 }
 
+let currentCustomIndex = 0;
+    const customCarousel = document.querySelector('.custom-carousel');
+    const totalCustomSlides = customCarousel.children.length;
+    let isAnimating = false;
 
+    function nextCustomSlide() {
+        if (!isAnimating) {
+            isAnimating = true;
+            currentCustomIndex = (currentCustomIndex + 1) % totalCustomSlides;
+            customCarousel.style.transform = `translateX(-${currentCustomIndex * 100}%)`;
+            setTimeout(() => {
+                isAnimating = false;
+            }, 500); // Adjust this timeout to match the animation duration
+        }
+    }
+
+    function prevCustomSlide() {
+        if (!isAnimating) {
+            isAnimating = true;
+            currentCustomIndex = (currentCustomIndex - 1 + totalCustomSlides) % totalCustomSlides;
+            customCarousel.style.transform = `translateX(-${currentCustomIndex * 100}%)`;
+            setTimeout(() => {
+                isAnimating = false;
+            }, 500); // Adjust this timeout to match the animation duration
+        }
+    }

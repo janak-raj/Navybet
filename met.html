@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Registration Popup</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+/* Popup Styles */
+.popup-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out forwards;
+  font-family: 'Roboto', sans-serif; /* Example custom font */
+}
+
+.popup {
+  background-color: #232323;
+  width: 30%;
+  padding: 30px;
+  padding-right: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease-in-out;
+}
+
+.popup-content {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.popup-header {
+  position: relative;
+  padding: 10px;
+}
+
+.popup-header h2 {
+  margin: 0;
+  font-size: 24px;
+  text-align: center;
+  color: goldenrod;
+  letter-spacing: 2px;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+  font-family: 'Montserrat', sans-serif; /* Example custom font */
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.form-group input {
+    outline: none;
+  width: calc(100% - 40px);
+  padding: 12px;
+  padding-left: 40px;
+  border: 1px solid #ccc;
+  background-color: #333;
+  color: gold;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.form-group label {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: gold;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  height: 40px;
+  background-color: goldenrod;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-left: .5em;
+  font-weight: bolder;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin-bottom: .5em;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.popup-footer {
+  text-align: center;
+}
+
+.popup-footer p {
+  margin: 0;
+}
+
+.popup-footer a {
+  color: gold;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.popup-footer a:hover {
+  color: goldenrod;
+}
+
+.sub-links {
+    text-align: center;
+}
+
+.sub-links a {
+    color: gold;
+    text-decoration: none;
+}
+
+.sub-links a:hover {
+    color: goldenrod;
+}
+
+/* Additional Styles for Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+    </style>
+  </head>
+  <body>
+    <button onclick="openPopup()">Login</button>
+    <!-- Login & Registration Popup -->
+<div class="popup-container" id="popup-container">
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <div class="popup-header">
+          <h2>Login</h2>
+          <span class="close" onclick="closePopup()">&times;</span>
+        </div>
+        <form id="login-form" class="form">
+          <div class="form-group">
+            <label for="username"><i class="fas fa-user"></i></label>
+            <input type="text" id="username" name="username" placeholder="Username" required>
+          </div>
+          <div class="form-group">
+            <label for="password"><i class="fas fa-lock"></i></label>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <span class="toggle-password" onclick="togglePasswordVisibility()"><i class="fas fa-eye"></i></span>
+          </div>
+          <button type="submit" class="btn">Login</button>
+          <div class="sub-links">
+            <p><a href="#" onclick="forgotPassword()">Forgot Password?</a></p>
+          </div>
+        </form>
+        <form id="register-form" class="form" style="display: none;">
+          <div class="form-group">
+            <label for="new-username"><i class="fas fa-user"></i></label>
+            <input type="text" id="new-username" name="new-username" placeholder="Username" required>
+          </div>
+          <div class="form-group">
+            <label for="new-email"><i class="fas fa-envelope"></i></label>
+            <input type="email" id="new-email" name="new-email" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+            <label for="new-password"><i class="fas fa-lock"></i></label>
+            <input type="password" id="new-password" name="new-password" placeholder="Password" required>
+            <span class="toggle-password" onclick="toggleNewPasswordVisibility()"><i class="fas fa-eye"></i></span>
+          </div>
+          <button type="submit" class="btn">Register</button>
+        </form>
+        <div id="reset-form" class="reset-password" style="display:none;">
+          <p style="text-align: center;">Enter your email to reset your password:</p>
+          <form class="form">
+            <div class="form-group">
+              <label for="email"><i class="fas fa-envelope"></i></label>
+              <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <button type="submit" class="btn">Reset Password</button>
+          </form>
+          <div class="sub-links">
+            <p>Don't have an account? <a href="#" onclick="toggleRegForm()">Register</a></p>
+            <p>Back to login? <a href="#" onclick="toggleLogForm()">Login</a></p>
+          </div>
+        </div>
+        <div class="popup-footer">
+          <p>Don't have an account? <a href="#" onclick="toggleForm()">Register</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="script.js"></script>
+    <script>
+// Function to open popup
+function openPopup() {
+  document.getElementById("popup-container").style.display = "block";
+}
+
+// Function to close popup
+function closePopup() {
+  document.getElementById("popup-container").style.display = "none";
+  //refreshPage();
+}
+
+// Function to refresh the page
+function refreshPage() {
+  location.reload(); // Reload the page
+}
+
+
+// Function to toggle between login and registration form
+function toggleForm() {
+  var loginForm = document.getElementById("login-form");
+  var registerForm = document.getElementById("register-form");
+  var popupHeader = document.querySelector(".popup-header h2");
+  var footerText = document.querySelector(".popup-footer p:last-child");
+
+  if (popupHeader.textContent === "Login") {
+    loginForm.reset();
+    popupHeader.textContent = "Register";
+    footerText.innerHTML = "Already have an account? <a href='#' onclick='toggleForm()'>Login</a>";
+    loginForm.style.display = "none";
+    registerForm.style.display = "block";
+  } else if (popupHeader.textContent === "Forgot Password?") {
+    toggleForgotPasswordForm();
+  } else {
+    loginForm.reset();
+    popupHeader.textContent = "Login";
+    footerText.innerHTML = "Don't have an account? <a href='#' onclick='toggleForm()'>Register</a>";
+    registerForm.style.display = "none";
+    loginForm.style.display = "block";
+  }
+}
+
+function toggleLogForm() {
+    var loginForm = document.getElementById("login-form");
+  var registerForm = document.getElementById("register-form");
+  var popupHeader = document.querySelector(".popup-header h2");
+  var footerText = document.querySelector(".popup-footer p:last-child");
+  var resetForm = document.getElementById("reset-form");
+
+  loginForm.reset();
+    popupHeader.textContent = "Login";
+    footerText.style.display = "block";
+    footerText.innerHTML = "Don't have an account? <a href='#' onclick='toggleForm()'>Register</a>";
+    registerForm.style.display = "none";
+    loginForm.style.display = "block";
+
+    resetForm.style.display = "none";  
+}
+
+function toggleRegForm() {
+    var loginForm = document.getElementById("login-form");
+  var registerForm = document.getElementById("register-form");
+  var popupHeader = document.querySelector(".popup-header h2");
+  var footerText = document.querySelector(".popup-footer p:last-child");
+  var resetForm = document.getElementById("reset-form");
+
+    loginForm.reset();
+    popupHeader.textContent = "Register";
+    footerText.style.display = "block";
+    footerText.innerHTML = "Already have an account? <a href='#' onclick='toggleForm()'>Login</a>";
+    loginForm.style.display = "none";
+    registerForm.style.display = "block";
+
+    resetForm.style.display = "none";    
+}
+
+// Function to handle forgot password
+function forgotPassword() {
+  var resetForm = document.getElementById("reset-form");
+  var popupHeader = document.querySelector(".popup-header h2");
+  var footerText = document.querySelector(".popup-footer p:first-child");
+
+  //resetForm.reset();
+  popupHeader.textContent = "Forgot Password?";
+  footerText.style.display = "none";
+  toggleForgotPasswordForm();
+}
+
+// Function to toggle between login and reset password forms
+function toggleForgotPasswordForm() {
+  var loginForm = document.getElementById("login-form");
+  var resetForm = document.getElementById("reset-form");
+  var popupHeader = document.querySelector(".popup-header h2");
+
+  if (popupHeader.textContent === "Forgot Password?") {
+    loginForm.style.display = "none";
+    resetForm.style.display = "block";
+  } else {
+    loginForm.style.display = "block";
+    resetForm.style.display = "none";
+  }
+}
+
+// Function to toggle password visibility for login form
+function togglePasswordVisibility() {
+  var passwordInput = document.getElementById("password");
+  var icon = document.querySelector(".toggle-password i");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    passwordInput.type = "password";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  }
+}
+
+// Function to toggle password visibility for registration form
+function toggleNewPasswordVisibility() {
+  var passwordInput = document.getElementById("new-password");
+  var icon = document.querySelector(".toggle-password i");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    passwordInput.type = "password";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  }
+}
+
+    </script>
+  </body>
+</html>
