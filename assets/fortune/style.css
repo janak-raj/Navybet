@@ -1,0 +1,65 @@
+.spin-game-container {
+  width: 100%;
+  height: auto;
+  margin-top: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.spin-game-container .game-side-panel {
+  background-color: #232323;
+  margin-left: 1em;
+  margin-bottom: 2em;
+  overflow-y: scroll;
+}
+
+.spin-game-container .game-side-panel li {
+  color: gold;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+.spin-game-container .game-side-panel li span {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#fortune-wheel {
+  font-family: PingFangTC, "Noto Sans TC", sans-serif;
+  font-weight: lighter;
+}
+#fortune-wheel g.slice text {
+  stroke: #fff;
+  letter-spacing: 0.2em;
+  font-size: 16px;
+}
+#fortune-wheel .centerspin {
+  fill: gold;
+  pointer-events: none;
+}
+
+#awardresult {
+  text-align: center;
+}
+
+.spin-control-buttons {
+  width: 100%;
+  height: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.spin-control-buttons button {
+  width: 40%;
+  height: 40px;
+  background-color: goldenrod;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-left: 1em;
+  cursor: pointer;
+}

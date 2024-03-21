@@ -56,3 +56,5 @@ let currentCustomIndex = 0;
             }, 500); // Adjust this timeout to match the animation duration
         }
     }
+
+

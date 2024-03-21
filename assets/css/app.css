@@ -7,6 +7,28 @@
   font-weight: 300;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 body {
   overflow-x: hidden;
   background-color: #131418;
@@ -298,7 +320,7 @@ nav {
 
 .game-cats {
   width: 100%;
-  margin-top: 12em;
+  margin-top: 14em;
   padding-top: 0em;
   padding-bottom: 2em;
   height: auto;
@@ -432,7 +454,7 @@ nav {
   margin-bottom: 36px;
   font-size: 24px;
   text-align: center;
-  color: #111;
+  color: #fff;
 }
 
 .revho-func-component {
@@ -456,6 +478,7 @@ nav {
   width: 25%;
   padding-right: 24px;
   padding-bottom: 0px;
+  margin-top: .5em;
 }
 
 .revho-func-card-gallery-component {
@@ -464,6 +487,7 @@ nav {
   padding-top: 100%;
   box-sizing: border-box;
   overflow: hidden;
+  border: 1px solid goldenrod;
 }
 
 .revho-func-card-gallery-infoContainer::before {
@@ -480,6 +504,10 @@ nav {
 
 .revho-func-card-gallery-component.revho-func-data-default-container:hover .revho-func-card-gallery-infoContainer.revho-func-data-default-container {
   top: calc(100% - 148px);
+}
+
+.revho-func-card-socials-iconContainer i {
+  color: gold;
 }
 
 .revho-func-card-gallery-infoContainer {
@@ -533,6 +561,7 @@ nav {
   font-size: 16px;
   line-height: 26px;
   cursor: pointer;
+  color: gold;
 }
 
 .revho-func-card-info-component>* {
@@ -546,7 +575,9 @@ nav {
   white-space: nowrap;
   z-index: 1;
 }
-
+.revho-func-card-gallery-component {
+  overflow: hidden;
+}
 .revho-func-card-gallery-component:hover .revho-func-card-socials-component {
   opacity: 1;
 }
@@ -611,6 +642,7 @@ nav {
 
 .revho-func-card-gallery-component:hover .revho-func-card-socials-icon:hover {
   opacity: 0.9;
+  color: gold;
 }
 
 .revho-func-card-gallery-infoContainer.revho-func-data-default-container .revho-func-card-socials-component svg,
@@ -649,7 +681,6 @@ nav {
   right: 0;
   bottom: 0;
   z-index: 1;
-  background-color: #000;
 }
 
 .revho-func-card-photo-photo {
@@ -682,11 +713,11 @@ nav {
 
 .revho-func-card-photo-photoShow {
   opacity: 1;
-  width: 100%;
+  min-width: 100%;
   max-height: 10em;
   resize: none;
   background-size: cover;
-  border: 2px solid salmon;
+  /* border: 2px solid salmon; */
 }
 
 .site-footer {
@@ -908,7 +939,7 @@ nav {
 }
 
 .slide_viewer {
-  height: 340px;
+  height: 400px;
   overflow: hidden;
   position: relative;
   border-radius: 10px;
@@ -924,6 +955,11 @@ nav {
   position: absolute;
   width: 100%;
   border-radius: 10px;
+}
+
+.slide img {
+  width: 100%;
+  background-size: cover;
 }
 
 .slide:first-child {
@@ -975,7 +1011,7 @@ a.slide_btn {
   margin: 0 auto;
   width: 100%;
   position: relative;
-  top: -340px;
+  top: -380px;
 }
 
 .previous_btn {
@@ -1180,5 +1216,115 @@ a.slide_btn {
 
 .custom-prev:hover,
 .custom-next:hover {
+  background-color: #232323;
+}
+
+.game-gall {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10em;
+}
+
+.game-gall div.game-side-panel:first-child {
+  margin-left: 0em;
+  margin-bottom: 2em;
+  background-color: #232323;
+  overflow-y: auto;
+}
+
+.game-gall div:first-child li {
+  padding: 1.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin: 0;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.game-gall div:first-child li a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.game-gall div:first-child li a i {
+  color: gold;
+}
+
+.game-gall div:first-child li a b {
+  margin-left: .5em;
+}
+
+.game-gall div:first-child li span {
+  font-size: 14px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background-color: #444;
+  color: gold;
+  padding: .2em;
+  border-radius: 4px;
+  padding-left: 10px;
+  margin-left: 1em;
+  padding-right: 10px;
+  position: absolute;
+  right: 80.5%;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.game-gall .games-container {
+  width: 76%;
+  margin: 0;
+  padding: 0;
+}
+
+.game-gall .games-container .main-team-layout {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.game-gall .games-container .revho-func-grid-item {
+  width: 30%;
+}
+.loading-spinner {
+  border: 4px solid goldenrod;
+  border-left-color: gold;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+.game-gall .load-btn {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+/* Load More button style */
+#load-more-btn {
+  background-color: goldenrod;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#load-more-btn:hover {
   background-color: #232323;
 }

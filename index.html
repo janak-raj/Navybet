@@ -11,7 +11,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
-    <style></style>
   </head>
   <body>
     <div class="navigation">
@@ -31,7 +30,7 @@
           <li><a href="pages/sports.html">Sports</a></li>
           <li><a href="pages/live-casino.html">Live Casino</a></li>
           <li><a href="pages/slots.html">Slots</a></li>
-          <li><a href="pages/wonder-wheel.html">Wonder Wheel</a></li>
+          <li><a href="assets/fortune/index.html">Fortune Wheel</a></li>
           <li><a href="pages/e-sports.html">E-Sports</a></li>
           <!-- <li><a href="#" id="dropBtn" onmouseover="dropSubMenu()" class="dropbtn">Tournaments</a></li> -->
 
@@ -958,99 +957,4 @@
 <script src="assets/js/app.js"></script>
 <script src="assets/js/utils.js"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<script>
-  $(".slider").each(function () {
-    var $this = $(this);
-    var $group = $this.find(".slide_group");
-    var $slides = $this.find(".slide");
-    var bulletArray = [];
-    var currentIndex = 0;
-    var timeout;
-
-    function move(newIndex) {
-      var animateLeft, slideLeft;
-
-      advance();
-
-      if ($group.is(":animated") || currentIndex === newIndex) {
-        return;
-      }
-
-      bulletArray[currentIndex].removeClass("active");
-      bulletArray[newIndex].addClass("active");
-
-      if (newIndex > currentIndex) {
-        slideLeft = "100%";
-        animateLeft = "-100%";
-      } else {
-        slideLeft = "-100%";
-        animateLeft = "100%";
-      }
-
-      $slides.eq(newIndex).css({
-        display: "block",
-        left: slideLeft,
-      });
-      $group.animate(
-        {
-          left: animateLeft,
-        },
-        function () {
-          $slides.eq(currentIndex).css({
-            display: "none",
-          });
-          $slides.eq(newIndex).css({
-            left: 0,
-          });
-          $group.css({
-            left: 0,
-          });
-          currentIndex = newIndex;
-        }
-      );
-    }
-
-    function advance() {
-      clearTimeout(timeout);
-      timeout = setTimeout(function () {
-        if (currentIndex < $slides.length - 1) {
-          move(currentIndex + 1);
-        } else {
-          move(0);
-        }
-      }, 4000);
-    }
-
-    $(".next_btn").on("click", function () {
-      if (currentIndex < $slides.length - 1) {
-        move(currentIndex + 1);
-      } else {
-        move(0);
-      }
-    });
-
-    $(".previous_btn").on("click", function () {
-      if (currentIndex !== 0) {
-        move(currentIndex - 1);
-      } else {
-        move(3);
-      }
-    });
-
-    $.each($slides, function (index) {
-      var $button = $('<a class="slide_btn">&bull;</a>');
-
-      if (index === currentIndex) {
-        $button.addClass("active");
-      }
-      $button
-        .on("click", function () {
-          move(index);
-        })
-        .appendTo(".slide_buttons");
-      bulletArray.push($button);
-    });
-
-    advance();
-  });
-</script>
+<script src="assets/js/slider.js"></script>

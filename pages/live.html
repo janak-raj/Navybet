@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Navybet - Live</title>
     <link rel="stylesheet" href="../assets/css/app.css" />
+    <link rel="stylesheet" href="../assets/css/utils.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
   <body>
@@ -24,7 +25,8 @@
           <li><a href="sports.html">Sports</a></li>
           <li><a href="live-casino.html">Live Casino</a></li>
           <li><a href="slots.html">Slots</a></li>
-          <li><a href="wonder-wheel.html">Wonder Wheel</a></li>
+          <li><a href="../assets/fortune/index.html">Fortune Wheel</a></li>
+          <li><a href="e-sports.html">E-Sports</a></li>
           <!-- <li><a href="#" id="dropBtn" onmouseover="dropSubMenu()" class="dropbtn">Tournaments</a></li> -->
 
           <li>
@@ -36,14 +38,129 @@
               </ul>
             </div>
           </li>
-          <li><a href="auth.html"><button class="login-button">Log In</button></a></li>
-          <li><a href="auth.html"><button class="join-button">Sign Up</button></a></li>
+          <li><button class="login-button" onclick="openPopup()">Log In</button></li>
+          <li><button class="join-button" onclick="openPopup()">Sign Up</button></li>
         </ul>
       </nav>
     </div>
 
     <main>
       <div class="expander" style="height: 40em;padding-top: 10em; background-color: black;"><h2 style="text-align: center;">Unable to fetch Data</h2></div>
+      <!-- Login & Registration Popup -->
+      <div class="popup-container" id="popup-container">
+        <div class="popup" id="popup">
+          <div class="popup-content">
+            <div class="popup-header">
+              <h2>Login</h2>
+              <span class="close" onclick="closePopup()">&times;</span>
+            </div>
+            <form id="login-form" class="form">
+              <div class="form-group">
+                <label for="username"><i class="fas fa-user"></i></label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Username"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="password"><i class="fas fa-lock"></i></label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Password"
+                  required
+                />
+                <span
+                  class="toggle-password"
+                  onclick="togglePasswordVisibility()"
+                  ><i class="fas fa-eye"></i
+                ></span>
+              </div>
+              <button type="submit" class="btn">Login</button>
+              <div class="sub-links">
+                <p>
+                  <a href="#" onclick="forgotPassword()">Forgot Password?</a>
+                </p>
+              </div>
+            </form>
+            <form id="register-form" class="form" style="display: none">
+              <div class="form-group">
+                <label for="new-username"><i class="fas fa-user"></i></label>
+                <input
+                  type="text"
+                  id="new-username"
+                  name="new-username"
+                  placeholder="Username"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="new-email"><i class="fas fa-envelope"></i></label>
+                <input
+                  type="email"
+                  id="new-email"
+                  name="new-email"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="new-password"><i class="fas fa-lock"></i></label>
+                <input
+                  type="password"
+                  id="new-password"
+                  name="new-password"
+                  placeholder="Password"
+                  required
+                />
+                <span
+                  class="toggle-password"
+                  onclick="toggleNewPasswordVisibility()"
+                  ><i class="fas fa-eye"></i
+                ></span>
+              </div>
+              <button type="submit" class="btn">Register</button>
+            </form>
+            <div id="reset-form" class="reset-password" style="display: none">
+              <p style="text-align: center; margin-bottom: .5em;">
+                Enter your email to reset your password:
+              </p>
+              <form class="form">
+                <div class="form-group">
+                  <label for="email"><i class="fas fa-envelope"></i></label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn">Reset Password</button>
+              </form>
+              <div class="sub-links">
+                <p>
+                  Don't have an account?
+                  <a href="#" onclick="toggleRegForm()">Register</a>
+                </p>
+                <p>
+                  Back to login? <a href="#" onclick="toggleLogForm()">Login</a>
+                </p>
+              </div>
+            </div>
+            <div class="popup-footer">
+              <p>
+                Don't have an account?
+                <a href="#" onclick="toggleForm()">Register</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
       <!-- Site footer -->
@@ -101,3 +218,4 @@
   </body>
 </html>
 <script src="../assets/js/app.js"></script>
+<script src="../assets/js/utils.js"></script>
